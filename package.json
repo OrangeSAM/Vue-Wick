@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/OrangeSAM/Vue-Wick/issues"
   },
-  "homepage": "https://github.com/OrangeSAM/Vue-Wick#readme"
+  "homepage": "https://github.com/OrangeSAM/Vue-Wick#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
