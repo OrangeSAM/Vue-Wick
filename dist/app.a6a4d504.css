@@ -1,0 +1,35 @@
+.w-button[data-v-f062c5] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size);
+  height: var(--button-height);
+  padding: 0 1em;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background: var(--button-bg);
+}
+.w-button[data-v-f062c5]:hover {
+  border-color: var(--border-color-hover);
+}
+.w-button[data-v-f062c5]:active {
+  background-color: var(--button-active-bg);
+}
+.w-button[data-v-f062c5]:focus {
+  outline: none;
+}
+.w-button > .content[data-v-f062c5] {
+  order: 2;
+  margin-left: 5px;
+}
+.w-button > .icon[data-v-f062c5] {
+  order: 1;
+}
+.w-button.icon-right > .content[data-v-f062c5] {
+  order: 1;
+  margin-left: 0;
+  margin-right: 5px;
+}
+.w-button.icon-right > .icon[data-v-f062c5] {
+  order: 2;
+}
