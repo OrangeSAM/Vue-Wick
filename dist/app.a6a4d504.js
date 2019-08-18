@@ -12431,7 +12431,17 @@ var _default = {
     },
     iconPosition: {
       type: String,
-      default: "left"
+      default: "left",
+      // 防止用户传up这种预料之外的position过来
+      validator: function validator(value) {
+        // 举例right right !== left(true) right !== right (false)
+        // 举例up up !== left(true) up !== right(true)
+        if (value !== "left" && value !== "right") {
+          return false;
+        } else {
+          return true;
+        }
+      }
     }
   }
 };
