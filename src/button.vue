@@ -1,9 +1,7 @@
 <template>
   <div>
     <button class="w-button" :class="{[`icon-${iconPosition}`]: true}">
-      <svg v-if="icon" class="icon">
-        <use :xlink:href="`#w-${icon}`" />
-      </svg>
+      <w-icon v-if="icon" :name="icon"></w-icon>
       <div class="content">
         <slot></slot>
       </div>
@@ -24,11 +22,14 @@ export default {
       validator(value) {
         // 举例right right !== left(true) right !== right (false)
         // 举例up up !== left(true) up !== right(true)
+        // 即 既不满足left 还不满足right 那就不行了
         if (value !== "left" && value !== "right") {
           return false;
         } else {
           return true;
         }
+        // 更牛逼的写法
+        // return value === 'left' || value === 'right'
       }
     }
   }
@@ -59,7 +60,7 @@ export default {
     order: 2;
     margin-left: 5px;
   }
-  > .icon {
+  > .w-icon {
     order: 1;
   }
   &.icon-right {
@@ -68,7 +69,7 @@ export default {
       margin-left: 0;
       margin-right: 5px;
     }
-    > .icon {
+    > .w-icon {
       order: 2;
     }
   }

@@ -22,7 +22,7 @@
   order: 2;
   margin-left: 5px;
 }
-.w-button > .icon[data-v-f062c5] {
+.w-button > .w-icon[data-v-f062c5] {
   order: 1;
 }
 .w-button.icon-right > .content[data-v-f062c5] {
@@ -30,6 +30,11 @@
   margin-left: 0;
   margin-right: 5px;
 }
-.w-button.icon-right > .icon[data-v-f062c5] {
+.w-button.icon-right > .w-icon[data-v-f062c5] {
   order: 2;
+}
+/* 图标跟字一样高就好了 */
+.w-icon {
+  width: 1em;
+  height: 1em;
 }
