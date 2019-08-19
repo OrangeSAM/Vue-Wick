@@ -1,4 +1,13 @@
+@keyframes spin-data-v-f062c5 {
+0% {
+    transform: rotate(0deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
 .w-button[data-v-f062c5] {
+  vertical-align: middle;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +29,8 @@
 }
 .w-button > .content[data-v-f062c5] {
   order: 2;
+}
+.w-button > .ml[data-v-f062c5] {
   margin-left: 5px;
 }
 .w-button > .w-icon[data-v-f062c5] {
@@ -32,6 +43,9 @@
 }
 .w-button.icon-right > .w-icon[data-v-f062c5] {
   order: 2;
+}
+.w-button .loading[data-v-f062c5] {
+  animation: spin-data-v-f062c5 1.5s infinite linear;
 }
 /* 图标跟字一样高就好了 */
 .w-icon {

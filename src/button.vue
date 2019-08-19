@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <button class="w-button" :class="{[`icon-${iconPosition}`]: true}">
-      <w-icon v-if="icon" :name="icon"></w-icon>
-      <div class="content">
-        <slot></slot>
-      </div>
-    </button>
-  </div>
+  <button class="w-button" :class="{[`icon-${iconPosition}`]: true}" @click="wClick">
+    <w-icon v-if="icon && !loading" :name="icon" :class="{ml: icon && loading}"></w-icon>
+    <w-icon class="loading" v-if="loading" name="loading"></w-icon>
+    <div class="content">
+      <slot></slot>
+    </div>
+  </button>
 </template>
 
 <script>
@@ -14,6 +13,11 @@ export default {
   props: {
     icon: {
       type: String
+    },
+    loading: {
+      // Boolean是类型，boolean是typeof 时的一个值
+      type: Boolean,
+      default: false
     },
     iconPosition: {
       type: String,
@@ -32,12 +36,26 @@ export default {
         // return value === 'left' || value === 'right'
       }
     }
+  },
+  methods: {
+    wClick() {
+      this.$emit("click");
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .w-button {
+  vertical-align: middle;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -58,6 +76,9 @@ export default {
   }
   > .content {
     order: 2;
+  }
+  // 如果传了icon再加上这个类
+  > .ml {
     margin-left: 5px;
   }
   > .w-icon {
@@ -72,6 +93,9 @@ export default {
     > .w-icon {
       order: 2;
     }
+  }
+  .loading {
+    animation: spin 1.5s infinite linear;
   }
 }
 </style>

@@ -12421,11 +12421,15 @@ exports.default = void 0;
 //
 //
 //
-//
 var _default = {
   props: {
     icon: {
       type: String
+    },
+    loading: {
+      // Boolean是类型，boolean是typeof 时的一个值
+      type: Boolean,
+      default: false
     },
     iconPosition: {
       type: String,
@@ -12444,6 +12448,11 @@ var _default = {
 
       }
     }
+  },
+  methods: {
+    wClick: function wClick() {
+      this.$emit("click");
+    }
   }
 };
 exports.default = _default;
@@ -12460,21 +12469,29 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "w-button",
-        class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj)
-      },
-      [
-        _vm.icon ? _c("w-icon", { attrs: { name: _vm.icon } }) : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
-      ],
-      1
-    )
-  ])
+  return _c(
+    "button",
+    {
+      staticClass: "w-button",
+      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
+      on: { click: _vm.wClick }
+    },
+    [
+      _vm.icon && !_vm.loading
+        ? _c("w-icon", {
+            class: { ml: _vm.icon && _vm.loading },
+            attrs: { name: _vm.icon }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.loading
+        ? _c("w-icon", { staticClass: "loading", attrs: { name: "loading" } })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12591,7 +12608,10 @@ _vue.default.component("w-button", _button.default);
 _vue.default.component("w-icon", _icon.default);
 
 new _vue.default({
-  el: "#app"
+  el: "#app",
+  data: {
+    loading1: true
+  }
 });
 },{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -12621,7 +12641,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9447" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1444" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
