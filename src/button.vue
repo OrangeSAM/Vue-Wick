@@ -9,7 +9,12 @@
 </template>
 
 <script>
+// 对于这里不是很明白，项目在之前不是已经全局引入icon了
+import Icon from "./icon";
 export default {
+  components: {
+    "w-icon": Icon
+  },
   props: {
     icon: {
       type: String
