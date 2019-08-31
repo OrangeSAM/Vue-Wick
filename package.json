@@ -1,6 +1,6 @@
 {
-  "name": "vue-wick",
-  "version": "1.0.0",
+  "name": "wick",
+  "version": "0.0.1",
   "description": "A Vue UI component library",
   "main": "index.js",
   "scripts": {
