@@ -12492,9 +12492,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+// 对于这里不是很明白，项目在之前不是已经全局引入iconle
 var _default = {
   components: {
-    "g-icon": _icon.default
+    "w-icon": _icon.default
   },
   props: {
     icon: {
@@ -23897,7 +23898,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11996" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2864" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
