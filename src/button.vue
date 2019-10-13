@@ -12,6 +12,7 @@
 // 对于这里不是很明白，项目在之前不是已经全局引入iconle
 import Icon from "./icon";
 export default {
+  name: "wick-button",
   components: {
     "w-icon": Icon
   },

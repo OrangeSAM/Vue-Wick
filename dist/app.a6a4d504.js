@@ -12418,17 +12418,18 @@ exports.default = void 0;
 //
 //
 var _default = {
+  name: "wick-icon",
   props: ["name"]
 };
 exports.default = _default;
-        var $67b20f = exports.default || module.exports;
+        var $2107ad = exports.default || module.exports;
       
-      if (typeof $67b20f === 'function') {
-        $67b20f = $67b20f.options;
+      if (typeof $2107ad === 'function') {
+        $2107ad = $2107ad.options;
       }
     
         /* template */
-        Object.assign($67b20f, (function () {
+        Object.assign($2107ad, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12457,9 +12458,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$67b20f', $67b20f);
+            api.createRecord('$2107ad', $2107ad);
           } else {
-            api.reload('$67b20f', $67b20f);
+            api.reload('$2107ad', $2107ad);
           }
         }
 
@@ -12494,6 +12495,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 // 对于这里不是很明白，项目在之前不是已经全局引入iconle
 var _default = {
+  name: "wick-button",
   components: {
     "w-icon": _icon.default
   },
@@ -12531,14 +12533,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $f062c5 = exports.default || module.exports;
+        var $f25d38 = exports.default || module.exports;
       
-      if (typeof $f062c5 === 'function') {
-        $f062c5 = $f062c5.options;
+      if (typeof $f25d38 === 'function') {
+        $f25d38 = $f25d38.options;
       }
     
         /* template */
-        Object.assign($f062c5, (function () {
+        Object.assign($f25d38, (function () {
           var render = function() {
   var _obj
   var _vm = this
@@ -12575,7 +12577,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-f062c5",
+            _scopeId: "data-v-f25d38",
             functional: undefined
           };
         })());
@@ -12588,9 +12590,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$f062c5', $f062c5);
+            api.createRecord('$f25d38', $f25d38);
           } else {
-            api.reload('$f062c5', $f062c5);
+            api.reload('$f25d38', $f25d38);
           }
         }
 
@@ -12615,6 +12617,7 @@ exports.default = void 0;
 //
 //
 var _default = {
+  name: "wick-button-group",
   mounted: function mounted() {
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
@@ -12646,14 +12649,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $4383ac = exports.default || module.exports;
+        var $97ac04 = exports.default || module.exports;
       
-      if (typeof $4383ac === 'function') {
-        $4383ac = $4383ac.options;
+      if (typeof $97ac04 === 'function') {
+        $97ac04 = $97ac04.options;
       }
     
         /* template */
-        Object.assign($4383ac, (function () {
+        Object.assign($97ac04, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12680,9 +12683,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$4383ac', $4383ac);
+            api.createRecord('$97ac04', $97ac04);
           } else {
-            api.reload('$4383ac', $4383ac);
+            api.reload('$97ac04', $97ac04);
           }
         }
 
@@ -23898,7 +23901,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2864" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62767" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

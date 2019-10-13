@@ -32,25 +32,27 @@
   </head>
   <body>
     <div id="app">
-      <w-button>
-        我爱js
-      </w-button>
-      <w-button icon="settings" icon-position="right">
-        my queeny
-      </w-button>
-      <w-button
-        icon="loading"
-        icon-position="right"
-        :loading="loading1"
-        @click="loading1
+      <div>
+        <w-button>
+          我爱js
+        </w-button>
+        <w-button icon="settings" icon-position="right">
+          my queeny
+        </w-button>
+        <w-button
+          icon="loading"
+          icon-position="right"
+          :loading="loading1"
+          @click="loading1
         = !loading1"
-      >
-        my Amy
-      </w-button>
-      <w-button-group>
-        <w-button icon="left">左按钮</w-button>
-        <w-button icon="right" icon-position="right">右按钮</w-button>
-      </w-button-group>
+        >
+          my Amy
+        </w-button>
+        <w-button-group>
+          <w-button icon="left">左按钮</w-button>
+          <w-button icon="right" icon-position="right">右按钮</w-button>
+        </w-button-group>
+      </div>
     </div>
     <script src="./src/app.js"></script>
     <script src="./src/svg.js"></script>
