@@ -24,6 +24,9 @@
       #app {
         margin: 20px;
       }
+      #app > div {
+        margin-bottom: 20px;
+      }
       body {
         font-size: var(--font-size);
       }</style>
@@ -31,6 +34,7 @@
   <body>
     <div id="app">
       <div>
+        <h4>button 组件示例</h4>
         <w-button>
           我爱js
         </w-button>
@@ -45,6 +49,12 @@
           <w-button icon="left">左按钮</w-button>
           <w-button icon="right" icon-position="right">右按钮</w-button>
         </w-button-group>
+      </div>
+      <div>
+        <h4>input组件示例</h4>
+        <w-input value="Sam"></w-input>
+        <w-input value="Sam" disabled=""></w-input>
+        <w-input value="Sam" readOnly=""></w-input>
       </div>
     </div>
     <script src="/app.a6a4d504.js"></script>

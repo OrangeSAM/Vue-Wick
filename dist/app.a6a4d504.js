@@ -12696,6 +12696,97 @@ render._withStripped = true
       
       }
     })();
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"src/input.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+//
+//
+//
+//
+//
+//
+var _default = {
+  name: "wick-input",
+  props: {
+    value: {
+      type: String
+    },
+    disabled: {
+      value: {
+        type: Boolean,
+        default: false
+      }
+    },
+    readOnly: {
+      value: {
+        type: Boolean,
+        default: false
+      }
+    },
+    error: {
+      value: {
+        type: String
+      }
+    }
+  }
+};
+exports.default = _default;
+        var $1a89ae = exports.default || module.exports;
+      
+      if (typeof $1a89ae === 'function') {
+        $1a89ae = $1a89ae.options;
+      }
+    
+        /* template */
+        Object.assign($1a89ae, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "wrapper", class: _vm.error }, [
+    _c("input", {
+      attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readOnly },
+      domProps: { value: _vm.value }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-1a89ae",
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$1a89ae', $1a89ae);
+          } else {
+            api.reload('$1a89ae', $1a89ae);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
 },{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"node_modules/vue-hot-reload-api/dist/index.js","vue":"node_modules/vue/dist/vue.common.js"}],"node_modules/assertion-error/index.js":[function(require,module,exports) {
 /*!
  * assertion-error
@@ -23764,6 +23855,8 @@ var _icon = _interopRequireDefault(require("./icon"));
 
 var _buttonGroup = _interopRequireDefault(require("./button-group"));
 
+var _input = _interopRequireDefault(require("./input"));
+
 var _chai = _interopRequireDefault(require("chai"));
 
 var _chaiSpies = _interopRequireDefault(require("chai-spies"));
@@ -23775,6 +23868,8 @@ _vue.default.component("w-button", _button4.default);
 _vue.default.component("w-icon", _icon.default);
 
 _vue.default.component("w-button-group", _buttonGroup.default);
+
+_vue.default.component("w-input", _input.default);
 
 new _vue.default({
   el: "#app",
@@ -23797,7 +23892,6 @@ var expect = _chai.default.expect; // 测试icon
   });
   button.$mount();
   var useElement = button.$el.querySelector("use");
-  console.log(useElement);
   expect(useElement.getAttribute("xlink:href")).to.eq("#w-settings"); // 测试通过
 
   button.$el.remove();
@@ -23873,7 +23967,7 @@ var expect = _chai.default.expect; // 测试icon
 
   expect(spy).to.have.been.called();
 }
-},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","chai":"node_modules/chai/index.js","chai-spies":"node_modules/chai-spies/chai-spies.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"node_modules/vue/dist/vue.common.js","./button":"src/button.vue","./icon":"src/icon.vue","./button-group":"src/button-group.vue","./input":"src/input.vue","chai":"node_modules/chai/index.js","chai-spies":"node_modules/chai-spies/chai-spies.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

@@ -1,10 +1,14 @@
 import Vue from "vue";
+
 import Button from "./button";
 import Icon from "./icon";
 import ButtonGroup from "./button-group";
+
+import Input from "./input";
 Vue.component("w-button", Button);
 Vue.component("w-icon", Icon);
 Vue.component("w-button-group", ButtonGroup);
+Vue.component("w-input", Input);
 new Vue({
   el: "#app",
   data: {
@@ -27,7 +31,6 @@ const expect = chai.expect;
   });
   button.$mount();
   let useElement = button.$el.querySelector("use");
-  console.log(useElement);
   expect(useElement.getAttribute("xlink:href")).to.eq("#w-settings"); // 测试通过
   button.$el.remove();
   button.$destroy();
