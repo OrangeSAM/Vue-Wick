@@ -13,6 +13,11 @@ new Vue({
   el: "#app",
   data: {
     loading1: true
+  },
+  methods: {
+    myInputChange(event) {
+      console.log(event.target.value)
+    }
   }
 });
 
@@ -78,7 +83,7 @@ const expect = chai.expect;
     }
   });
   vm.$mount();
-  let spy = chai.spy(function() {});
+  let spy = chai.spy(function () { });
   vm.$on("click", spy);
   let button = vm.$el;
   button.click();

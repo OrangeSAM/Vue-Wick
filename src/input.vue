@@ -1,6 +1,15 @@
 <template>
-  <div class="wrapper" :class="error">
-    <input :value="value" type="text" :disabled="disabled" :readonly="readOnly" />
+  <div class="wrapper" :class="{error}">
+    <input
+      :value="value"
+      type="text"
+      :disabled="disabled"
+      :readonly="readonly"
+      @change="$emit('change', $event)"
+      @focus="$emit('focus', $event)"
+      @blur="$emit('blur', $event)"
+      @input="$emit('input', $event)"
+    />
   </div>
 </template>
 
@@ -17,7 +26,7 @@ export default {
         default: false
       }
     },
-    readOnly: {
+    readonly: {
       value: {
         type: Boolean,
         default: false
@@ -30,6 +39,8 @@ export default {
     }
   }
 };
+// 为什么用readOnly做变量名就不行，导致属性只能传递到div上，
+// 而必须使用readonly
 </script>
 
 <style lang="scss" scoped>
@@ -41,9 +52,6 @@ $box-shadow-color: rgba(0, 0, 0, 0.5);
 .wrapper {
   display: inline;
   font-size: $font-size;
-  &.error {
-      > input 
-  }
   > input {
     height: 32px;
     border: 1px solid $border-color;

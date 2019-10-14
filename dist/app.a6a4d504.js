@@ -12422,14 +12422,14 @@ var _default = {
   props: ["name"]
 };
 exports.default = _default;
-        var $2107ad = exports.default || module.exports;
+        var $67b20f = exports.default || module.exports;
       
-      if (typeof $2107ad === 'function') {
-        $2107ad = $2107ad.options;
+      if (typeof $67b20f === 'function') {
+        $67b20f = $67b20f.options;
       }
     
         /* template */
-        Object.assign($2107ad, (function () {
+        Object.assign($67b20f, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12458,9 +12458,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$2107ad', $2107ad);
+            api.createRecord('$67b20f', $67b20f);
           } else {
-            api.reload('$2107ad', $2107ad);
+            api.reload('$67b20f', $67b20f);
           }
         }
 
@@ -12533,14 +12533,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $f25d38 = exports.default || module.exports;
+        var $f062c5 = exports.default || module.exports;
       
-      if (typeof $f25d38 === 'function') {
-        $f25d38 = $f25d38.options;
+      if (typeof $f062c5 === 'function') {
+        $f062c5 = $f062c5.options;
       }
     
         /* template */
-        Object.assign($f25d38, (function () {
+        Object.assign($f062c5, (function () {
           var render = function() {
   var _obj
   var _vm = this
@@ -12577,7 +12577,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-f25d38",
+            _scopeId: "data-v-f062c5",
             functional: undefined
           };
         })());
@@ -12590,9 +12590,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$f25d38', $f25d38);
+            api.createRecord('$f062c5', $f062c5);
           } else {
-            api.reload('$f25d38', $f25d38);
+            api.reload('$f062c5', $f062c5);
           }
         }
 
@@ -12649,14 +12649,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $97ac04 = exports.default || module.exports;
+        var $4383ac = exports.default || module.exports;
       
-      if (typeof $97ac04 === 'function') {
-        $97ac04 = $97ac04.options;
+      if (typeof $4383ac === 'function') {
+        $4383ac = $4383ac.options;
       }
     
         /* template */
-        Object.assign($97ac04, (function () {
+        Object.assign($4383ac, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -12683,9 +12683,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$97ac04', $97ac04);
+            api.createRecord('$4383ac', $4383ac);
           } else {
-            api.reload('$97ac04', $97ac04);
+            api.reload('$4383ac', $4383ac);
           }
         }
 
@@ -12709,6 +12709,15 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "wick-input",
   props: {
@@ -12721,7 +12730,7 @@ var _default = {
         default: false
       }
     },
-    readOnly: {
+    readonly: {
       value: {
         type: Boolean,
         default: false
@@ -12733,24 +12742,40 @@ var _default = {
       }
     }
   }
-};
+}; // 为什么用readOnly做变量名就不行，导致属性只能传递到div上，
+// 而必须使用readonly
+
 exports.default = _default;
-        var $1a89ae = exports.default || module.exports;
+        var $698e06 = exports.default || module.exports;
       
-      if (typeof $1a89ae === 'function') {
-        $1a89ae = $1a89ae.options;
+      if (typeof $698e06 === 'function') {
+        $698e06 = $698e06.options;
       }
     
         /* template */
-        Object.assign($1a89ae, (function () {
+        Object.assign($698e06, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "wrapper", class: _vm.error }, [
+  return _c("div", { staticClass: "wrapper", class: { error: _vm.error } }, [
     _c("input", {
-      attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readOnly },
-      domProps: { value: _vm.value }
+      attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readonly },
+      domProps: { value: _vm.value },
+      on: {
+        change: function($event) {
+          return _vm.$emit("change", $event)
+        },
+        focus: function($event) {
+          return _vm.$emit("focus", $event)
+        },
+        blur: function($event) {
+          return _vm.$emit("blur", $event)
+        },
+        input: function($event) {
+          return _vm.$emit("input", $event)
+        }
+      }
     })
   ])
 }
@@ -12761,7 +12786,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-1a89ae",
+            _scopeId: "data-v-698e06",
             functional: undefined
           };
         })());
@@ -12774,9 +12799,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$1a89ae', $1a89ae);
+            api.createRecord('$698e06', $698e06);
           } else {
-            api.reload('$1a89ae', $1a89ae);
+            api.reload('$698e06', $698e06);
           }
         }
 
@@ -23875,6 +23900,11 @@ new _vue.default({
   el: "#app",
   data: {
     loading1: true
+  },
+  methods: {
+    myInputChange: function myInputChange(event) {
+      console.log(event.target.value);
+    }
   }
 }); // 单元测试
 
@@ -23995,7 +24025,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62767" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

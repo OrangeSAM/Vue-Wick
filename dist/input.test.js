@@ -12404,7 +12404,7 @@ function patchScopedSlots (instance) {
   }
 }
 
-},{}],"../src/icon.vue":[function(require,module,exports) {
+},{}],"../src/input.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12417,25 +12417,74 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
-  name: "wick-icon",
-  props: ["name"]
-};
+  name: "wick-input",
+  props: {
+    value: {
+      type: String
+    },
+    disabled: {
+      value: {
+        type: Boolean,
+        default: false
+      }
+    },
+    readonly: {
+      value: {
+        type: Boolean,
+        default: false
+      }
+    },
+    error: {
+      value: {
+        type: String
+      }
+    }
+  }
+}; // 为什么用readOnly做变量名就不行，导致属性只能传递到div上，
+// 而必须使用readonly
+
 exports.default = _default;
-        var $6642ff = exports.default || module.exports;
+        var $3118d0 = exports.default || module.exports;
       
-      if (typeof $6642ff === 'function') {
-        $6642ff = $6642ff.options;
+      if (typeof $3118d0 === 'function') {
+        $3118d0 = $3118d0.options;
       }
     
         /* template */
-        Object.assign($6642ff, (function () {
+        Object.assign($3118d0, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("svg", { staticClass: "w-icon" }, [
-    _c("use", { attrs: { "xlink:href": "#w-" + _vm.name } })
+  return _c("div", { staticClass: "wrapper", class: { error: _vm.error } }, [
+    _c("input", {
+      attrs: { type: "text", disabled: _vm.disabled, readonly: _vm.readonly },
+      domProps: { value: _vm.value },
+      on: {
+        change: function($event) {
+          return _vm.$emit("change", $event)
+        },
+        focus: function($event) {
+          return _vm.$emit("focus", $event)
+        },
+        blur: function($event) {
+          return _vm.$emit("blur", $event)
+        },
+        input: function($event) {
+          return _vm.$emit("input", $event)
+        }
+      }
+    })
   ])
 }
 var staticRenderFns = []
@@ -12445,7 +12494,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-3118d0",
             functional: undefined
           };
         })());
@@ -12458,9 +12507,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$6642ff', $6642ff);
+            api.createRecord('$3118d0', $3118d0);
           } else {
-            api.reload('$6642ff', $6642ff);
+            api.reload('$3118d0', $3118d0);
           }
         }
 
@@ -12471,229 +12520,64 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"../src/button.vue":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _icon = _interopRequireDefault(require("./icon"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// 对于这里不是很明白，项目在之前不是已经全局引入iconle
-var _default = {
-  name: "wick-button",
-  components: {
-    "w-icon": _icon.default
-  },
-  props: {
-    icon: {
-      type: String
-    },
-    loading: {
-      // Boolean是类型，boolean是typeof 时的一个值
-      type: Boolean,
-      default: false
-    },
-    iconPosition: {
-      type: String,
-      default: "left",
-      // 防止用户传up这种预料之外的position过来
-      validator: function validator(value) {
-        // 举例right right !== left(true) right !== right (false)
-        // 举例up up !== left(true) up !== right(true)
-        // 即 既不满足left 还不满足right 那就不行了
-        if (value !== "left" && value !== "right") {
-          return false;
-        } else {
-          return true;
-        } // 更牛逼的写法
-        // return value === 'left' || value === 'right'
-
-      }
-    }
-  },
-  methods: {
-    wClick: function wClick() {
-      this.$emit("click");
-    }
-  }
-};
-exports.default = _default;
-        var $693102 = exports.default || module.exports;
-      
-      if (typeof $693102 === 'function') {
-        $693102 = $693102.options;
-      }
-    
-        /* template */
-        Object.assign($693102, (function () {
-          var render = function() {
-  var _obj
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      staticClass: "w-button",
-      class: ((_obj = {}), (_obj["icon-" + _vm.iconPosition] = true), _obj),
-      on: { click: _vm.wClick }
-    },
-    [
-      _vm.icon && !_vm.loading
-        ? _c("w-icon", {
-            class: { ml: _vm.icon && _vm.loading },
-            attrs: { name: _vm.icon }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.loading
-        ? _c("w-icon", { staticClass: "loading", attrs: { name: "loading" } })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "content" }, [_vm._t("default")], 2)
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-          return {
-            render: render,
-            staticRenderFns: staticRenderFns,
-            _compiled: true,
-            _scopeId: "data-v-693102",
-            functional: undefined
-          };
-        })());
-      
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$693102', $693102);
-          } else {
-            api.reload('$693102', $693102);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"./icon":"../src/icon.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"button.test.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"input.test.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
 
-var _button = _interopRequireDefault(require("../src/button"));
+var _input = _interopRequireDefault(require("../src/input"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var expect = chai.expect;
 _vue.default.config.productionTip = false;
 _vue.default.config.devtools = false;
-describe("Button", function () {
-  it("存在.", function () {
-    expect(_button.default).to.be.ok;
-  }); // 一个it就是一个测试用例，
+describe('Input', function () {
+  it('存在', function () {
+    expect(_input.default).to.exist;
+  }); // 属性测试组
 
-  it("可以设置icon.", function () {
-    var Constructor = _vue.default.extend(_button.default);
+  describe('props', function () {
+    var Constructor = _vue.default.extend(_input.default);
 
-    var vm = new Constructor({
-      propsData: {
-        icon: "settings"
-      }
-    }).$mount();
-    var useElement = vm.$el.querySelector("use");
-    expect(useElement.getAttribute("xlink:href")).to.equal("#w-settings");
-    vm.$destroy();
-  });
-  it("可以设置loading.", function () {
-    var Constructor = _vue.default.extend(_button.default);
+    var vm;
+    afterEach(function () {
+      vm.$destroy();
+    });
+    it('接收 value', function () {
+      vm = new Constructor({
+        propsData: {
+          value: '1234'
+        }
+      }).$mount();
+      var inputElement = vm.$el.querySelector('input');
+      expect(inputElement.value).to.equal('1234');
+    });
+    it('接收 disabled', function () {
+      vm = new Constructor({
+        propsData: {
+          disabled: true
+        }
+      }).$mount();
+      var inputElement = vm.$el.querySelector('input');
+      expect(inputElement.disabled).to.equal(true);
+    });
+    it('接收 readonly', function () {
+      vm = new Constructor({
+        propsData: {
+          readonly: true
+        }
+      }).$mount();
+      var inputElement = vm.$el.querySelector('input');
+      expect(inputElement.readOnly).to.equal(true);
+    });
+  }); // 事件测试组
 
-    var vm = new Constructor({
-      propsData: {
-        icon: "settings",
-        loading: true
-      }
-    }).$mount();
-    var useElements = vm.$el.querySelectorAll("use");
-    expect(useElements.length).to.equal(1);
-    expect(useElements[0].getAttribute("xlink:href")).to.equal("#w-loading");
-    vm.$destroy();
-  });
-  it("icon 默认的 order 是 1", function () {
-    var div = document.createElement("div");
-    document.body.appendChild(div);
-
-    var Constructor = _vue.default.extend(_button.default);
-
-    var vm = new Constructor({
-      propsData: {
-        icon: "settings"
-      }
-    }).$mount(div);
-    var icon = vm.$el.querySelector("svg");
-    expect(getComputedStyle(icon).order).to.eq("1");
-    vm.$el.remove();
-    vm.$destroy();
-  });
-  it("设置 iconPosition 可以改变 order", function () {
-    var div = document.createElement("div");
-    document.body.appendChild(div);
-
-    var Constructor = _vue.default.extend(_button.default);
-
-    var vm = new Constructor({
-      propsData: {
-        icon: "settings",
-        iconPosition: "right"
-      }
-    }).$mount(div);
-    var icon = vm.$el.querySelector("svg");
-    expect(getComputedStyle(icon).order).to.eq("2");
-    vm.$el.remove();
-    vm.$destroy();
-  });
-  it("点击 button 触发 click 事件", function () {
-    var Constructor = _vue.default.extend(_button.default);
-
-    var vm = new Constructor({
-      propsData: {
-        icon: "settings"
-      }
-    }).$mount();
-    var callback = sinon.fake();
-    vm.$on("click", callback);
-    vm.$el.click();
-    expect(callback).to.have.been.called;
+  describe('事件', function () {
+    it('支持 change 事件');
   });
 });
-},{"vue":"../node_modules/vue/dist/vue.common.js","../src/button":"../src/button.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","../src/input":"../src/input.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -12896,5 +12780,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","button.test.js"], null)
-//# sourceMappingURL=/button.test.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","input.test.js"], null)
+//# sourceMappingURL=/input.test.js.map
