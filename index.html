@@ -63,6 +63,8 @@
         <w-input value="Sam" disabled></w-input>
         <w-input value="Sam" readonly></w-input>
         <w-input value="Amy" @change="myInputChange"></w-input>
+        <w-input v-model="message"></w-input>
+        <p>{{ message }}</p>
       </div>
     </div>
     <script src="./src/app.js"></script>

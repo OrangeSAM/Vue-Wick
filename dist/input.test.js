@@ -12472,16 +12472,16 @@ exports.default = _default;
       domProps: { value: _vm.value },
       on: {
         change: function($event) {
-          return _vm.$emit("change", $event)
+          return _vm.$emit("change", $event.target.value)
         },
         focus: function($event) {
-          return _vm.$emit("focus", $event)
+          return _vm.$emit("focus", $event.target.value)
         },
         blur: function($event) {
-          return _vm.$emit("blur", $event)
+          return _vm.$emit("blur", $event.target.value)
         },
         input: function($event) {
-          return _vm.$emit("input", $event)
+          return _vm.$emit("input", $event.target.value)
         }
       }
     })
@@ -12587,9 +12587,15 @@ describe('Input', function () {
         vm.$on(eventName, callback); // 触发input的change事件
 
         var event = new Event(eventName);
+        Object.defineProperty(event, 'target', {
+          value: {
+            value: 'hi'
+          },
+          enumerable: true
+        });
         var inputElement = vm.$el.querySelector('input');
         inputElement.dispatchEvent(event);
-        expect(callback).to.have.been.calledWith(event);
+        expect(callback).to.have.been.calledWith('hi');
       });
     }); // it('支持 focus 事件', () => {
     //     vm = new Constructor({}).$mount()
