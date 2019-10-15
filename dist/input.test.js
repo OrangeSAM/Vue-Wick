@@ -12574,7 +12574,33 @@ describe('Input', function () {
   }); // 事件测试组
 
   describe('事件', function () {
-    it('支持 change 事件');
+    var Constructor = _vue.default.extend(_input.default);
+
+    var vm;
+    afterEach(function () {
+      vm.$destroy();
+    });
+    it('支持 change/input/focus/blur 事件', function () {
+      ['change', 'input', 'focus', 'blur'].forEach(function (eventName) {
+        vm = new Constructor({}).$mount();
+        var callback = sinon.fake();
+        vm.$on(eventName, callback); // 触发input的change事件
+
+        var event = new Event(eventName);
+        var inputElement = vm.$el.querySelector('input');
+        inputElement.dispatchEvent(event);
+        expect(callback).to.have.been.calledWith(event);
+      });
+    }); // it('支持 focus 事件', () => {
+    //     vm = new Constructor({}).$mount()
+    //     const callback = sinon.fake()
+    //     vm.$on('focus', callback)
+    //     // 触发input的change事件
+    //     let event = new Event('focus')
+    //     let inputElement = vm.$el.querySelector('input')
+    //     inputElement.dispatchEvent(event)
+    //     expect(callback).to.have.been.calledWith(event)
+    // })
   });
 });
 },{"vue":"../node_modules/vue/dist/vue.common.js","../src/input":"../src/input.vue"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
