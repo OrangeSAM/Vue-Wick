@@ -11,5 +11,7 @@ export default {};
 <style lang="scss" scoped>
 .row {
   display: flex;
+  padding-right: 20px;
+  border: 1px solid salmon;
 }
 </style>

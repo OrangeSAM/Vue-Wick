@@ -12895,6 +12895,17 @@ var _default = {
     span: {
       type: [Number, String],
       default: 0
+    },
+    offset: {
+      type: [Number, String],
+      default: 0
+    }
+  },
+  computed: {
+    colClass: function colClass() {
+      var span = this.span,
+          offset = this.offset;
+      return [span && "col-".concat(span), offset && "offset-".concat(offset)];
     }
   }
 };
@@ -12913,7 +12924,7 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col", class: ["col-" + _vm.span] },
+    { staticClass: "col", class: _vm.colClass },
     [_vm._t("default", [_vm._t("default")])],
     2
   )
@@ -24173,7 +24184,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8350" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3355" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

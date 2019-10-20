@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="[`col-${span}`]">
+  <div class="col" :class="colClass">
       <slot><slot>
   </div>
 </template>
@@ -13,6 +13,19 @@ export default {
         span: {
             type: [Number, String],
             default: 0
+        },
+        offset: {
+            type: [Number, String],
+            default: 0
+        }
+    },
+    computed: {
+        colClass () {
+            let {span, offset} = this
+            return [
+                span && `col-${span}`,
+                offset && `offset-${offset}`
+            ]
         }
     }
 }
@@ -22,12 +35,17 @@ export default {
     .col{
         height: 100px;
         background: beige;
-        width: 50%;
-        border: 1px solid red;
+        margin-left: 20px;
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {
                 width: ($n / 24) * 100%
+            }
+        }
+        $class-prefix: offset-;
+        @for $n from 1 through 24 {
+            &.#{$class-prefix}#{$n} {
+                margin-left: ($n / 24) * 100%
             }
         }
     }
