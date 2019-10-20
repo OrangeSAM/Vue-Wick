@@ -60,11 +60,22 @@
       <div>
         <h4>input组件示例</h4>
         <w-input value="Sam"></w-input>
-        <w-input value="Sam" disabled></w-input>
-        <w-input value="Sam" readonly></w-input>
-        <w-input value="Amy" @change="myInputChange"></w-input>
-        <w-input v-model="message"></w-input>
-        <p>{{ message }}</p>
+        <w-input value="I am disabled" disabled></w-input>
+        <w-input value="I am readonly" readonly></w-input>
+        <w-input value="I am change event" @change="myInputChange"></w-input>
+        <w-input v-model="message"></w-input><span>{{ message }}</span>
+      </div>
+      <div>
+        <h4>栅格系统 Row & Col 组件</h4>
+        <w-row>
+          <w-col>1</w-col>
+          <w-col>2</w-col>
+          <w-col>3</w-col>
+        </w-row>
+        <w-row>
+          <w-col>2</w-col>
+          <w-col span="22">22</w-col>
+        </w-row>
       </div>
     </div>
     <script src="./src/app.js"></script>
