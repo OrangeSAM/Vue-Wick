@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>wick</title>
-    <style>
-      * {
+    <style>* {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -30,9 +29,8 @@
       }
       body {
         font-size: var(--font-size);
-      }
-    </style>
-  </head>
+      }</style>
+  <link rel="stylesheet" href="/app.a6a4d504.css"></head>
   <body>
     <div id="app">
       <div>
@@ -43,13 +41,8 @@
         <w-button icon="settings" icon-position="right">
           my queeny
         </w-button>
-        <w-button
-          icon="loading"
-          icon-position="right"
-          :loading="loading1"
-          @click="loading1
-        = !loading1"
-        >
+        <w-button icon="loading" icon-position="right" :loading="loading1" @click="loading1
+        = !loading1">
           my Amy
         </w-button>
         <w-button-group>
@@ -60,8 +53,8 @@
       <div>
         <h4>input组件示例</h4>
         <w-input value="Sam"></w-input>
-        <w-input value="I am disabled" disabled></w-input>
-        <w-input value="I am readonly" readonly></w-input>
+        <w-input value="I am disabled" disabled=""></w-input>
+        <w-input value="I am readonly" readonly=""></w-input>
         <w-input value="I am change event" @change="myInputChange"></w-input>
         <w-input v-model="message"></w-input><span>{{ message }}</span>
       </div>
@@ -87,7 +80,7 @@
         </w-row>
       </div>
     </div>
-    <script src="./src/app.js"></script>
-    <script src="./src/svg.js"></script>
+    <script src="/app.a6a4d504.js"></script>
+    <script src="/svg.8fe7ff3c.js"></script>
   </body>
 </html>

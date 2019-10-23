@@ -12,7 +12,6 @@ export default {
         // 写了span 按需分配
         span: {
             type: [Number, String],
-            default: 0
         },
         offset: {
             type: [Number, String],
@@ -22,6 +21,7 @@ export default {
     computed: {
         colClass () {
             let {span, offset} = this
+            // 解构赋值
             return [
                 span && `col-${span}`,
                 offset && `offset-${offset}`
@@ -49,5 +49,7 @@ export default {
                 margin-left: ($n / 24) * 100%
             }
         }
+        // 问题1，如果是行首的话，这样会少了第一个col 的margin-left: 20px， 参照element才是对的，
+        // 问题2，row与col的gutter如何实现，目前是参照MDN官网的row 右padding, col 左margin
     }
 </style>
