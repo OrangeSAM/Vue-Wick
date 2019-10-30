@@ -12825,7 +12825,19 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+var _default = {
+  name: "wick-row",
+  props: {
+    gutter: {
+      type: [Number, String]
+    }
+  },
+  provide: function provide() {
+    return {
+      gutter: this.gutter
+    };
+  }
+};
 exports.default = _default;
         var $d7db80 = exports.default || module.exports;
       
@@ -12839,7 +12851,18 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    {
+      staticClass: "row",
+      style: {
+        marginLeft: -_vm.gutter / 2 + "px",
+        marginRight: -_vm.gutter / 2 + "px"
+      }
+    },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12903,13 +12926,19 @@ var _default = {
   computed: {
     colClass: function colClass() {
       var span = this.span,
-          offset = this.offset; // 解构赋值
+          offset = this.offset,
+          gutter = this.gutter; // 解构赋值
 
-      return [span && "col-".concat(span), offset && "offset-".concat(offset)];
-    }
-  } // todo 自适应系统
+      return [span && "col-".concat(span), offset && "offset-".concat(offset), gutter && "gutter-".concat(gutter)];
+    } // gutter () {
+    //     let parent = this.$parent
+    // }
 
-};
+  },
+  inject: ['gutter'],
+  mounted: function mounted() {}
+}; // todo 自适应系统
+
 exports.default = _default;
         var $2bc1f1 = exports.default || module.exports;
       
@@ -12925,7 +12954,14 @@ exports.default = _default;
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col", class: _vm.colClass },
+    {
+      staticClass: "col",
+      class: _vm.colClass,
+      style: {
+        paddingLeft: _vm.gutter / 2 + "px",
+        paddingRight: _vm.gutter / 2 + "px"
+      }
+    },
     [_vm._t("default", [_vm._t("default")])],
     2
   )
@@ -13034,7 +13070,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10384" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "13427" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

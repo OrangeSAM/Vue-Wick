@@ -1,6 +1,6 @@
 <template>
-  <div class="col" :class="colClass">
-      <slot><slot>
+  <div class="col" :class="colClass" :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}">
+    <slot><slot>
   </div>
 </template>
 
@@ -20,13 +20,20 @@ export default {
     },
     computed: {
         colClass () {
-            let {span, offset} = this
+            let {span, offset, gutter} = this
             // 解构赋值
             return [
                 span && `col-${span}`,
-                offset && `offset-${offset}`
+                offset && `offset-${offset}`,
+                gutter && `gutter-${gutter}`
             ]
         }
+        // gutter () {
+        //     let parent = this.$parent
+        // }
+    },
+    inject: ['gutter'],
+    mounted() {
     }
 }
 // todo 自适应系统
@@ -34,9 +41,6 @@ export default {
 
 <style lang="scss" scoped>
     .col{
-        height: 100px;
-        background: beige;
-        margin-left: 20px;
         $class-prefix: col-;
         @for $n from 1 through 24 {
             &.#{$class-prefix}#{$n} {
