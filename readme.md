@@ -1,4 +1,6 @@
-#####
+开发使用，安装parcel 
+npm i -D parcel-bundler
+
 
 ##### 作者：**刘一笔 Sam**
 
