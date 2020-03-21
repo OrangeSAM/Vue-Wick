@@ -1,7 +1,11 @@
 <template>
-  <button class="w-button" :class="{[`icon-${iconPosition}`]: true}" @click="wClick">
-    <w-icon v-if="icon && !loading" :name="icon" :class="{ml: icon && loading}"></w-icon>
-    <w-icon class="loading" v-if="loading" name="loading"></w-icon>
+  <button class="w-button"
+          :disabled="disabled"
+          :class="buttonClass"
+          @click="wClick">
+    <!--只要传了loading属性，那就不适用第一类icon-->
+    <w-icon class="ml" v-if="icon && !loading" :name="icon" ></w-icon>
+    <w-icon class="loading ml" v-if="loading" name="loading"></w-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -9,14 +13,28 @@
 </template>
 
 <script>
-// 对于这里不是很明白，项目在之前不是已经全局引入iconle
-import Icon from "./icon";
+// 对于这里不是很明白，项目在之前不是已经全局引入icon了
+import Wicon from "./icon";
 export default {
   name: "wick-button",
-  components: {
-    "w-icon": Icon
+  components: {Wicon},
+  computed: {
+    buttonClass () {
+      let classArr = []
+      // icon位置类
+      classArr.push(`icon-${this.iconPosition}`)
+      // 如果设置了禁用状态，添加禁用类
+      if (this.disabled) {
+        classArr.push('disabled')
+      }
+      return classArr
+    }
   },
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     icon: {
       type: String
     },
@@ -67,27 +85,34 @@ export default {
   align-items: center;
   font-size: var(--font-size);
   height: var(--button-height);
+  /*为了按钮内的图标和文字水平对齐*/
+  line-height: var(--button-height);
   padding: 0 1em;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
-  background: var(--button-bg);
+  background-color: var(--button-bg);
   &:hover {
     cursor: pointer;
     border-color: var(--border-color-hover);
     background-color: var(--background-color-hover);
   }
   &:active {
-    background-color: var(--button-active-bg);
+    /*如果想让这个效果消失的慢点，该咋办呢，transition设置了，box-shadow会失效*/
+    box-shadow: 0px 0px 10px 0px lightgray;
   }
   &:focus {
+    /*去除useragent自带外边框*/
     outline: none;
+  }
+  &.disabled {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+  > .ml {
+    margin-right: 5px;
   }
   > .content {
     order: 2;
-  }
-  // 如果传了icon再加上这个类
-  > .ml {
-    margin-left: 5px;
   }
   > .w-icon {
     order: 1;
@@ -97,6 +122,9 @@ export default {
       order: 1;
       margin-left: 0;
       margin-right: 5px;
+    }
+    > .ml {
+      margin-right: 0px;
     }
     > .w-icon {
       order: 2;
