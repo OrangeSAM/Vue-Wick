@@ -14,7 +14,7 @@
       /*css变量*/
       html {
         --button-height: 32px;
-        --font-size: 14px;
+        --font-size: 16px;
         --button-bg: white;
         --button-active-bg: #eee;
         --border-radius: 4px;
@@ -31,7 +31,7 @@
         margin-bottom: 20px;
       }
       h5{
-        margin: 20px 0;
+        margin: 20px 0px 10px 0px;
       }
       body {
         font-size: var(--font-size);
@@ -41,7 +41,7 @@
   <body>
     <div id="app">
       <div>
-        <h4>button 组件示例</h4>
+        <h4>1. button 组件示例</h4>
         <w-button>
           登录
         </w-button>
@@ -72,7 +72,7 @@
       </div>
 
       <div>
-        <h4>input组件示例</h4>
+        <h4>2. input组件示例</h4>
         <w-input value="Sam"></w-input>
         <w-input value="I am disabled" disabled></w-input>
         <w-input value="I am readonly" readonly></w-input>
@@ -81,7 +81,7 @@
       </div>
 
       <div>
-        <h4>栅格系统 Row & Col 组件</h4>
+        <h4>3. 栅格系统 Row & Col 组件</h4>
         <w-row :gutter="20">
           <w-col span="1">
             <div style="border: 1px solid red;">1</div>
@@ -119,7 +119,7 @@
       </div>
 
       <div>
-        <h4>布局组件 Layout & Header & Aside & Content & Footer 组件</h4>
+        <h4>4. 布局组件 Layout & Header & Aside & Content & Footer 组件</h4>
         <h5>上中下布局</h5>
         <w-layout>
           <w-header>header</w-header>
