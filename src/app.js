@@ -10,6 +10,7 @@ import Aside from './aside'
 import Footer from './footer'
 import Content from './content'
 import Header from './header'
+import Plugin from './plugin'
 
 
 // 这里注册时的w-button, 是供在template里使用组件时编写的
@@ -26,6 +27,7 @@ Vue.component("w-header", Header)
 Vue.component("w-content", Content)
 Vue.component("w-footer", Footer)
 Vue.component("w-aside", Aside)
+Vue.use(Plugin)
 new Vue({
   el: "#app",
   data: {
@@ -35,6 +37,9 @@ new Vue({
   methods: {
     myInputChange(event) {
       console.log(event)
+    },
+    showMe () {
+      this.$toast('我是一条message')
     }
   }
 });
