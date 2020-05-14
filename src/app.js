@@ -39,6 +39,20 @@ new Vue({
       console.log(event)
     },
     showMe () {
+      this.$toast('我是一条message111', {
+        closeBtn: {
+          text: '关闭',
+          callback: (toast) => {
+            toast.log()
+            console.log('用户信息')
+          }
+        }
+      })
+    },
+    showMe1 () {
+      this.$toast('我是一条message', 1)
+    },
+    showMe2 () {
       this.$toast('我是一条message')
     }
   }
