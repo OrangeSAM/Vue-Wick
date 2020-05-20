@@ -1,8 +1,11 @@
 <template>
-  <div class='toast'>
-    <slot></slot>
-    <div class='line'></div>
-    <span v-if='closeBtn' class='close' @click='onClickCloseBtn'>{{closeBtn.text}}</span>
+  <div class='toast' ref='wrap'>
+    <div class='message'>
+      <slot v-if='!enableHTML'></slot>
+      <div v-else v-html='$slots.default[0]'></div>
+    </div>
+    <div class='line' ref='line'></div>
+    <span v-if='closeBtn' class='close' @click='clickCloseBtn'>{{closeBtn.text}}</span>
   </div>
 </template>
 
@@ -17,7 +20,7 @@
       },
       delayTime: {
         type: Number,
-        default: 3
+        default: 32
       },
       closeBtn: {
         type: Object,
@@ -38,6 +41,7 @@
       }
     },
     methods: {
+      // 关闭toast的清理
       close () {
         // remove和destroy 分别作了什么
         // 把对象从它所属的 DOM 树中删除。
@@ -49,7 +53,8 @@
       log () {
         console.log(2)
       },
-      onClickCloseBtn () {
+      // 用户点击关闭按钮
+      clickCloseBtn () {
         this.close()
         // 传了这个props 且是函数才执行
         if (this.closeBtn && typeof this.closeBtn.callback === 'function') {
@@ -57,14 +62,25 @@
           // 传一个当前的实例this给他
           this.closeBtn.callback(this)
         }
+      },
+      // 执行自动 关闭
+      execAutoClose () {
+        if (this.autoClose) {
+          setTimeout(() => {
+            this.close()
+          }, this.delayTime * 1000)
+        }
+      },
+      // 用tricky的方式来设定竖线的高度
+      setLineHeight () {
+        this.$nextTick(() => {
+          this.$refs.line.style.height = `${this.$refs.wrap.getBoundingClientRect().height}px`
+        })
       }
     },
     mounted () {
-      if (this.autoClose) {
-        setTimeout(() => {
-          this.close()
-        }, this.delayTime * 1000)
-      }
+      this.execAutoClose()
+      this.setLineHeight()
     }
   }
 </script>
@@ -74,7 +90,8 @@
   $toast-min-height: 40px;
   $toast-bg: rgba(0, 0, 0, .75);
   .toast {
-    height: $toast-min-height;
+    /*用最小高度会导致line中的height 100%不生效*/
+    min-height: $toast-min-height;
     background: $toast-bg;
     color: white;
     border-radius: 4px;
@@ -86,14 +103,18 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-  }
-  .close {
-    padding-left: 15px;
-  }
-  .line {
-    width: 1px;
-    height: 100%;
-    border-left: 1px solid #666666;
-    margin-left: 15px;
+    .message{
+      padding: 5px 0;
+    }
+    .close {
+      padding-left: 15px;
+      flex-shrink: 0;
+    }
+    .line {
+      width: 1px;
+      height: 100%;
+      border-left: 1px solid #666666;
+      margin-left: 15px;
+    }
   }
 </style>

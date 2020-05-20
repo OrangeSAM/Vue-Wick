@@ -7,9 +7,7 @@ export default {
       // 这里应优先使用组件而不是 js 原生API
       // 这样，可以在组件内用@click 形式的事件处理，而不是原生的addEventListener
       let toast = new Constructor({
-        propsData: {
-          closeBtn: toastOptions.closeBtn
-        }
+        propsData: toastOptions
       })
       // 要放在mount前面
       toast.$slots.default = [message]
