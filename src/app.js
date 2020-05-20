@@ -50,10 +50,12 @@ new Vue({
       })
     },
     showMe1 () {
-      this.$toast('<p>这是第一个P元素</p><p>这是第二个</p><p>这是第三个</p><p>这是第四个</p>', {enableHTML: true})
+      this.$toast('<p>这是第一个P元素</p><p>这是第二个</p><p>这是第三个</p><p>这是第四个</p>', {enableHTML: true, position: 'bottom'})
     },
     showMe2 () {
-      this.$toast('我是一条message')
+      this.$toast('我是一条message', {
+        position: 'middle'
+      })
     }
   }
 });

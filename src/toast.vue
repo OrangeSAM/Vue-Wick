@@ -1,6 +1,6 @@
 <template>
-  <div class='toast' ref='wrap'>
-    <div class='message'>
+  <div class='toast' ref='wrap' :class='toastClass'>
+    <div class='message' >
       <slot v-if='!enableHTML'></slot>
       <div v-else v-html='$slots.default[0]'></div>
     </div>
@@ -14,14 +14,17 @@
     name: 'wickToast',
     // 只是个配置
     props: {
+      // 是否自动关闭
       autoClose: {
         type: Boolean,
         default: true
       },
+      // 延迟关闭时间
       delayTime: {
         type: Number,
         default: 3
       },
+      // 关闭按钮
       closeBtn: {
         type: Object,
         // 不同于上面的3，对象是引用，每次创建一个新组件，里头默认值会是一样的(即改动一个组件的props, 会影响另一个组件的)
@@ -35,9 +38,24 @@
           }
         }
       },
+      // 是否允许传入HTML
       enableHTML: {
         type: Boolean,
         default: false
+      },
+      position: {
+        type: String,
+        default: 'top',
+        validator (value) {
+          return ['top', 'bottom', 'middle'].indexOf(value) >= 0
+        }
+      }
+    },
+    computed: {
+      toastClass () {
+        return {
+          [`position-${this.position}`]: true
+        }
       }
     },
     methods: {
@@ -98,23 +116,39 @@
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
     padding: 0 16px;
     position: fixed;
-    top: 10px;
     left: 50%;
-    transform: translateX(-50%);
     display: flex;
     align-items: center;
-    .message{
+
+    .message {
       padding: 5px 0;
     }
+
     .close {
       padding-left: 15px;
       flex-shrink: 0;
     }
+
     .line {
       width: 1px;
       height: 100%;
       border-left: 1px solid #666666;
       margin-left: 15px;
+    }
+
+    &.position-top {
+      top: 10px;
+      transform: translateX(-50%);
+    }
+
+    &.position-bottom {
+      bottom: 10px;
+      transform: translateX(-50%);
+    }
+
+    &.position-middle {
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 </style>
