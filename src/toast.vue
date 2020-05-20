@@ -51,7 +51,7 @@
         this.$destroy()
       },
       log () {
-        console.log(2)
+        console.log('组件内部的点击回调事件')
       },
       // 用户点击关闭按钮
       clickCloseBtn () {
