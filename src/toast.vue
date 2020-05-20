@@ -22,7 +22,7 @@
       // 延迟关闭时间
       delayTime: {
         type: Number,
-        default: 3
+        default: 31
       },
       // 关闭按钮
       closeBtn: {
