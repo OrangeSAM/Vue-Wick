@@ -20,7 +20,7 @@
       },
       delayTime: {
         type: Number,
-        default: 32
+        default: 3
       },
       closeBtn: {
         type: Object,
