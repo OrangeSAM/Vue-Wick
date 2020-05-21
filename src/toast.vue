@@ -1,11 +1,13 @@
 <template>
-  <div class='toast' ref='wrap' :class='toastClass'>
-    <div class='message' >
-      <slot v-if='!enableHTML'></slot>
-      <div v-else v-html='$slots.default[0]'></div>
+  <div class="wrap" :class='toastClass'>
+    <div class='toast' ref='toast'>
+      <div class='message'>
+        <slot v-if='!enableHTML'></slot>
+        <div v-else v-html='$slots.default[0]'></div>
+      </div>
+      <div class='line' ref='line'></div>
+      <span v-if='closeBtn' class='close' @click='clickCloseBtn'>{{closeBtn.text}}</span>
     </div>
-    <div class='line' ref='line'></div>
-    <span v-if='closeBtn' class='close' @click='clickCloseBtn'>{{closeBtn.text}}</span>
   </div>
 </template>
 
@@ -31,7 +33,7 @@
         // 所以每次都需要重新返回一个对象
         // 有点像data里的return，
         // 但凡是对象，都要用函数return
-        default () {
+        default() {
           return {
             text: '关闭',
             callback: undefined
@@ -46,13 +48,13 @@
       position: {
         type: String,
         default: 'top',
-        validator (value) {
+        validator(value) {
           return ['top', 'bottom', 'middle'].indexOf(value) >= 0
         }
       }
     },
     computed: {
-      toastClass () {
+      toastClass() {
         return {
           [`position-${this.position}`]: true
         }
@@ -60,7 +62,7 @@
     },
     methods: {
       // 关闭toast的清理
-      close () {
+      close() {
         // remove和destroy 分别作了什么
         // 把对象从它所属的 DOM 树中删除。
         // 对应 Vue 实例的所有指令都被解绑，所有的事件监听器被移除，所有的子实例也都被销毁。
@@ -68,11 +70,11 @@
         // destroy并不会删除dom
         this.$destroy()
       },
-      log () {
+      log() {
         console.log('组件内部的点击回调事件')
       },
       // 用户点击关闭按钮
-      clickCloseBtn () {
+      clickCloseBtn() {
         this.close()
         // 传了这个props 且是函数才执行
         if (this.closeBtn && typeof this.closeBtn.callback === 'function') {
@@ -82,7 +84,7 @@
         }
       },
       // 执行自动 关闭
-      execAutoClose () {
+      execAutoClose() {
         if (this.autoClose) {
           setTimeout(() => {
             this.close()
@@ -90,13 +92,13 @@
         }
       },
       // 用tricky的方式来设定竖线的高度
-      setLineHeight () {
+      setLineHeight() {
         this.$nextTick(() => {
-          this.$refs.line.style.height = `${this.$refs.wrap.getBoundingClientRect().height}px`
+          this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`
         })
       }
     },
-    mounted () {
+    mounted() {
       this.execAutoClose()
       this.setLineHeight()
     }
@@ -107,6 +109,65 @@
   $font-size: 14px;
   $toast-min-height: 40px;
   $toast-bg: rgba(0, 0, 0, .75);
+  $animation-duration: 600ms;
+  @keyframes slide-up {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .wrap {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &.position-top {
+      top: 0px;
+      .toast {
+        border-radius: 0 0 4px 4px;
+        animation: slide-down $animation-duration;
+      }
+    }
+
+    &.position-bottom {
+      bottom: 0px;
+      .toast {
+        border-radius: 4px 4px 0 0;
+        animation: slide-up $animation-duration;
+      }
+    }
+
+    &.position-middle {
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      .toast {
+        animation: fade-in $animation-duration;
+      }
+    }
+  }
+
   .toast {
     /*用最小高度会导致line中的height 100%不生效*/
     min-height: $toast-min-height;
@@ -115,8 +176,6 @@
     border-radius: 4px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
     padding: 0 16px;
-    position: fixed;
-    left: 50%;
     display: flex;
     align-items: center;
 
@@ -136,19 +195,5 @@
       margin-left: 15px;
     }
 
-    &.position-top {
-      top: 10px;
-      transform: translateX(-50%);
-    }
-
-    &.position-bottom {
-      bottom: 10px;
-      transform: translateX(-50%);
-    }
-
-    &.position-middle {
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 </style>
