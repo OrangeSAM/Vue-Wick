@@ -40,8 +40,9 @@ new Vue({
     },
     showMe () {
       this.$toast('我是一条message111', {
+        autoClose: 41,
         closeBtn: {
-          text: '关闭',
+          text: '关闭吧',
           callback: (toast) => {
             toast.log()
             console.log('用户信息')
@@ -50,7 +51,9 @@ new Vue({
       })
     },
     showMe1 () {
-      this.$toast('<p>这是第一个P元素</p><p>这是第二个</p><p>这是第三个</p><p>这是第四个</p>', {enableHTML: true, position: 'bottom'})
+      this.$toast('<p>这是第一个P元素</p><p>这是第二个</p><p>这是第三个</p><p>这是第四个</p>', {
+        enableHTML: true, position: 'bottom'
+      })
     },
     showMe2 () {
       this.$toast('我是一条message', {

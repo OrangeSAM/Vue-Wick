@@ -18,13 +18,11 @@
     props: {
       // 是否自动关闭
       autoClose: {
-        type: Boolean,
-        default: true
-      },
-      // 延迟关闭时间
-      delayTime: {
         type: Number,
-        default: 31
+        default: 3,
+        validator(value) {
+          return typeof value === 'number'
+        }
       },
       // 关闭按钮
       closeBtn: {
@@ -88,7 +86,7 @@
         if (this.autoClose) {
           setTimeout(() => {
             this.close()
-          }, this.delayTime * 1000)
+          }, this.autoClose * 1000)
         }
       },
       // 用tricky的方式来设定竖线的高度
@@ -184,6 +182,7 @@
     }
 
     .close {
+      cursor: pointer;
       padding-left: 15px;
       flex-shrink: 0;
     }
