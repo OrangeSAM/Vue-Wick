@@ -97,8 +97,8 @@
       }
     },
     mounted() {
-      this.execAutoClose()
       this.setLineHeight()
+      this.execAutoClose()
     }
   }
 </script>
@@ -127,7 +127,8 @@
       opacity: 1;
       transform: translateY(0%);
     }
-  }  @keyframes fade-in {
+  }
+  @keyframes fade-in {
     0% {
       opacity: 0;
     }
@@ -188,7 +189,6 @@
     }
 
     .line {
-      width: 1px;
       height: 100%;
       border-left: 1px solid #666666;
       margin-left: 15px;
