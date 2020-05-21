@@ -15,7 +15,7 @@ import Plugin from './plugin'
 
 // 这里注册时的w-button, 是供在template里使用组件时编写的
 // 而在组件内部声明的name, 可以在vue-devtools中看到组件的名称，
-//     可以用来标识组件，但并非唯一。
+// 可以用来标识组件，但并非唯一。
 Vue.component("w-button", Button);
 Vue.component("w-icon", Icon);
 Vue.component("w-button-group", ButtonGroup);

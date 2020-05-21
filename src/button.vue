@@ -14,15 +14,14 @@
 
 <script>
 // 对于这里不是很明白，项目在之前不是已经全局引入icon了
-import Wicon from "./icon";
+import WIcon from "./icon";
 export default {
   name: "wick-button",
-  components: {Wicon},
+  components: {WIcon},
   computed: {
     buttonClass () {
-      let classArr = []
       // icon位置类
-      classArr.push(`icon-${this.iconPosition}`)
+      let classArr = [`icon-${this.iconPosition}`]
       // 如果设置了禁用状态，添加禁用类
       if (this.disabled) {
         classArr.push('disabled')
@@ -65,6 +64,8 @@ export default {
     wClick() {
       this.$emit("click");
     }
+  },
+  mounted() {
   }
 };
 </script>
