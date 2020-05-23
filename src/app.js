@@ -11,6 +11,11 @@ import Footer from './footer'
 import Content from './content'
 import Header from './header'
 import Plugin from './plugin'
+import Tabs from './tabs'
+import TabsBody from './tabs-body'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
 
 
 // 这里注册时的w-button, 是供在template里使用组件时编写的
@@ -28,11 +33,17 @@ Vue.component("w-content", Content)
 Vue.component("w-footer", Footer)
 Vue.component("w-aside", Aside)
 Vue.use(Plugin)
+Vue.component('w-tabs', Tabs)
+Vue.component('w-tabs-body', TabsBody)
+Vue.component('w-tabs-head', TabsHead)
+Vue.component('w-tabs-item', TabsItem)
+Vue.component('w-tabs-pane', TabsPane)
 new Vue({
   el: "#app",
   data: {
     loading1: true,
-    message: '我支持双向绑定'
+    message: '我支持双向绑定',
+    selectedTab: 'woman'
   },
   methods: {
     myInputChange(event) {

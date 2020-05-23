@@ -1,170 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>wick</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      /*css变量*/
-      html {
-        --button-height: 32px;
-        --font-size: 16px;
-        --button-bg: white;
-        --button-active-bg: #eee;
-        --border-radius: 4px;
-        --color: #333;
-        --border-color: #999;
-        --border-color-hover: #666;
-        --background-color-hover: #f1f1f1;
-      }
-      #app {
-        margin: 20px;
-      }
-      /*临时样式*/
-      #app > div {
-        margin-bottom: 20px;
-      }
-      h5{
-        margin: 20px 0px 10px 0px;
-      }
-      body {
-        font-size: var(--font-size);
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app">
-      <div>
-        <h4>1. button 组件示例</h4>
-        <w-button>
-          登录
-        </w-button>
-        <w-button :disabled="true">
-          禁用状态的登录
-        </w-button>
-        <w-button icon="settings" icon-position="right">
-          设置
-        </w-button>
-        <w-button icon="settings">
-          设置
-        </w-button>
-        <w-button icon="loading"
-                  icon-position="right"
-                  :loading="loading1"
-                  @click="loading1 = !loading1">
-          加载中，图标在右边
-        </w-button>
-        <w-button icon="loading"
-                  :loading="loading1"
-                  @click="loading1 = !loading1">
-          加载中，图标在左边
-        </w-button>
-        <w-button-group>
-          <w-button icon="left">左按钮</w-button>
-          <w-button icon="right" icon-position="right">右按钮</w-button>
-        </w-button-group>
-      </div>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>wick</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      <div>
-        <h4>2. input组件示例</h4>
-        <w-input value="Sam"></w-input>
-        <w-input value="I am disabled" disabled></w-input>
-        <w-input value="I am readonly" readonly></w-input>
-        <w-input value="I am change event" @change="myInputChange"></w-input>
-        <w-input v-model="message"></w-input><span>{{ message }}</span>
-      </div>
+    /*css变量*/
+    html {
+      --button-height: 32px;
+      --font-size: 16px;
+      --button-bg: white;
+      --button-active-bg: #eee;
+      --border-radius: 4px;
+      --color: #333;
+      --border-color: #999;
+      --border-color-hover: #666;
+      --background-color-hover: #f1f1f1;
+    }
 
-      <div>
-        <h4>3. 栅格系统 Row & Col 组件</h4>
-        <w-row :gutter="20">
-          <w-col span="1">
-            <div style="border: 1px solid red;">1</div>
-          </w-col>
-          <w-col span="1">
-            <div style="border: 1px solid red;">1</div>
-          </w-col>
-          <w-col span="1">
-            <div style="border: 1px solid red;">1</div>
-          </w-col>
-          <w-col span="18">
-            <div style="border: 1px solid red;">18</div>
-          </w-col>
-          <w-col span="3">
-            <div style="border: 1px solid red;">3</div>
-          </w-col>
-        </w-row>
-        <w-row :gutter="20">
-          <w-col span="22" offset="2">
-            <div style="border: 1px solid red;">22</div>
-          </w-col>
-        </w-row>
-        <w-row>
-          <w-col span="1">
-            <div style="border: 1px solid red;">1</div>
-          </w-col>
-          <w-col span="22" offset="1">
-            <div style="border: 1px solid red;">22</div>
-          </w-col>
-        </w-row>
-        <w-row>
-          <w-col>12</w-col>
-          <w-col>12</w-col>
-        </w-row>
-      </div>
+    #app {
+      margin: 20px;
+    }
 
-      <div>
-        <h4>4. 布局组件 Layout & Header & Aside & Content & Footer 组件</h4>
-        <h5>上中下布局</h5>
+    /*临时样式*/
+    #app > div {
+      margin-bottom: 20px;
+    }
+
+    h5 {
+      margin: 20px 0px 10px 0px;
+    }
+
+    body {
+      font-size: var(--font-size);
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div style="display: none">
+    <div>
+      <h4>1. button 组件示例</h4>
+      <w-button>
+        登录
+      </w-button>
+      <w-button :disabled="true">
+        禁用状态的登录
+      </w-button>
+      <w-button icon="settings" icon-position="right">
+        设置
+      </w-button>
+      <w-button icon="settings">
+        设置
+      </w-button>
+      <w-button icon="loading"
+                icon-position="right"
+                :loading="loading1"
+                @click="loading1 = !loading1">
+        加载中，图标在右边
+      </w-button>
+      <w-button icon="loading"
+                :loading="loading1"
+                @click="loading1 = !loading1">
+        加载中，图标在左边
+      </w-button>
+      <w-button-group>
+        <w-button icon="left">左按钮</w-button>
+        <w-button icon="right" icon-position="right">右按钮</w-button>
+      </w-button-group>
+    </div>
+
+    <div>
+      <h4>2. input组件示例</h4>
+      <w-input value="Sam"></w-input>
+      <w-input value="I am disabled" disabled></w-input>
+      <w-input value="I am readonly" readonly></w-input>
+      <w-input value="I am change event" @change="myInputChange"></w-input>
+      <w-input v-model="message"></w-input>
+      <span>{{ message }}</span>
+    </div>
+
+    <div>
+      <h4>3. 栅格系统 Row & Col 组件</h4>
+      <w-row :gutter="20">
+        <w-col span="1">
+          <div style="border: 1px solid red;">1</div>
+        </w-col>
+        <w-col span="1">
+          <div style="border: 1px solid red;">1</div>
+        </w-col>
+        <w-col span="1">
+          <div style="border: 1px solid red;">1</div>
+        </w-col>
+        <w-col span="18">
+          <div style="border: 1px solid red;">18</div>
+        </w-col>
+        <w-col span="3">
+          <div style="border: 1px solid red;">3</div>
+        </w-col>
+      </w-row>
+      <w-row :gutter="20">
+        <w-col span="22" offset="2">
+          <div style="border: 1px solid red;">22</div>
+        </w-col>
+      </w-row>
+      <w-row>
+        <w-col span="1">
+          <div style="border: 1px solid red;">1</div>
+        </w-col>
+        <w-col span="22" offset="1">
+          <div style="border: 1px solid red;">22</div>
+        </w-col>
+      </w-row>
+      <w-row>
+        <w-col>12</w-col>
+        <w-col>12</w-col>
+      </w-row>
+    </div>
+
+    <div>
+      <h4>4. 布局组件 Layout & Header & Aside & Content & Footer 组件</h4>
+      <h5>上中下布局</h5>
+      <w-layout>
+        <w-header>header</w-header>
+        <w-content>content</w-content>
+        <w-footer>footer</w-footer>
+      </w-layout>
+
+      <h5>上左右下布局</h5>
+      <w-layout>
+        <w-header>header</w-header>
+        <w-layout>
+          <w-aside>侧边栏</w-aside>
+          <w-content>content</w-content>
+        </w-layout>
+        <w-footer>footer</w-footer>
+      </w-layout>
+
+      <h5>上右左下布局</h5>
+      <w-layout>
+        <w-header>header</w-header>
+        <w-layout>
+          <w-content>content</w-content>
+          <w-aside>侧边栏</w-aside>
+        </w-layout>
+        <w-footer>footer</w-footer>
+      </w-layout>
+
+      <h5>左上中下布局</h5>
+      <w-layout>
+        <w-aside>侧边栏</w-aside>
         <w-layout>
           <w-header>header</w-header>
           <w-content>content</w-content>
           <w-footer>footer</w-footer>
         </w-layout>
-
-        <h5>上左右下布局</h5>
-        <w-layout>
-          <w-header>header</w-header>
-          <w-layout>
-            <w-aside>侧边栏</w-aside>
-            <w-content>content</w-content>
-          </w-layout>
-          <w-footer>footer</w-footer>
-        </w-layout>
-
-        <h5>上右左下布局</h5>
-        <w-layout>
-          <w-header>header</w-header>
-          <w-layout>
-            <w-content>content</w-content>
-            <w-aside>侧边栏</w-aside>
-          </w-layout>
-          <w-footer>footer</w-footer>
-        </w-layout>
-
-        <h5>左上中下布局</h5>
-        <w-layout>
-          <w-aside>侧边栏</w-aside>
-          <w-layout>
-            <w-header>header</w-header>
-            <w-content>content</w-content>
-            <w-footer>footer</w-footer>
-          </w-layout>
-        </w-layout>
-      </div>
-
-      <div>
-        <span @click='showMe'>点我</span>
-        <span @click='showMe1'>点我1</span>
-        <span @click='showMe2'>点我2</span>
-      </div>
+      </w-layout>
     </div>
-    <script src="./src/app.js"></script>
-    <script src="./src/svg.js"></script>
-  </body>
+
+    <div>
+      <h5>toast组件</h5>
+      <span @click='showMe'>点我</span>
+      <span @click='showMe1'>点我1</span>
+      <span @click='showMe2'>点我2</span>
+    </div>
+  </div>
+
+
+  <div>
+    <h5>tabs组件</h5>
+    <w-tabs :selected.sync="selectedTab">
+      <w-tabs-head>
+        <w-tabs-item name="woman">
+          <w-icon name="settings"></w-icon>
+          beauty
+        </w-tabs-item>
+        <w-tabs-item name="IT" disabled>
+          IT
+        </w-tabs-item>
+        <w-tabs-item name="finance">
+          finance
+        </w-tabs-item>
+      </w-tabs-head>
+      <w-tabs-body>
+        <w-tabs-pane name="woman">
+          beauty相关
+        </w-tabs-pane>
+        <w-tabs-pane name="IT">
+          IT相关
+        </w-tabs-pane>
+        <w-tabs-pane name="finance">
+          finance相关
+        </w-tabs-pane>
+      </w-tabs-body>
+    </w-tabs>
+  </div>
+</div>
+<script src="./src/app.js"></script>
+<script src="./src/svg.js"></script>
+</body>
 </html>

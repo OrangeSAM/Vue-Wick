@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    name: 'wickToast',
+    name: 'wick-toast',
     // 只是个配置
     props: {
       // 是否自动关闭
