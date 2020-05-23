@@ -1,7 +1,9 @@
 <template>
   <div class="tabs-head">
     <slot></slot>
-    <slot name="actions"></slot>
+    <div class="actions-wrap">
+      <slot name="actions"></slot>
+    </div>
   </div>
 </template>
 
@@ -10,11 +12,19 @@
     name: "wick-tabs-head",
     inject: ['eventBus'],
     created() {
-      console.log(this.eventBus, 'head')
     }
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  $tab-height: 40px;
+  .tabs-head{
+    display: flex;
+    height: $tab-height;
+    justify-content: flex-start;
+    align-items: center;
+    >.actions-wrap {
+      margin-left: auto;
+    }
+  }
 </style>

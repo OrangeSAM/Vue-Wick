@@ -26,6 +26,9 @@
         }
       }
     },
+    mounted () {
+      this.eventBus.$emit('update:selected', this.selected)
+    },
     provide () {
       return {
         eventBus: this.eventBus
@@ -35,5 +38,7 @@
 </script>
 
 <style scoped>
-
+  .tabs {
+    border: 1px solid lightcoral;
+  }
 </style>

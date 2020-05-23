@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-pane">
+  <div class="tabs-pane" :class="classes" v-if="active">
     <slot></slot>
   </div>
 </template>
@@ -8,12 +8,37 @@
   export default {
     name: "wick-tabs-pane",
     inject: ['eventBus'],
+    data() {
+      return {
+        active: false
+      }
+    },
+    props: {
+      name: {
+        type: [String, Number],
+        required: true
+      }
+    },
+    computed: {
+      classes () {
+        return {
+          active: this.active
+        }
+      }
+    },
     created() {
-      console.log(this.eventBus, 'pane')
+      // 前面加个update是什么意思
+      this.eventBus.$on('update:selected', (name) => {
+        this.active = this.name === name
+      })
     }
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  .tabs-pane {
+    &.active {
+      background-color: lightcoral;
+    }
+  }
 </style>

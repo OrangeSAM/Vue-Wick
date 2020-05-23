@@ -9,7 +9,6 @@
     name: "wick-tabs-body",
     inject: ['eventBus'],
     created() {
-      console.log(this.eventBus, 'body')
     }
   }
 </script>
