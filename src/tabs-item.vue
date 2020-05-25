@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="itemClick" :class="classes">
+  <div class="tabs-item" @click="itemClick" :class="classes" :data-name='name'>
     <slot></slot>
   </div>
 </template>
@@ -60,6 +60,7 @@
     }
     &.disabled {
       color: lightgray;
+      cursor: not-allowed;
     }
   }
 </style>

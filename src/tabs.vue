@@ -27,11 +27,13 @@
       }
     },
     mounted () {
+      if (this.$children.length === 0){
+        throw new Error('tabs的子组件应该是 tabs-head 和 tabs-body')
+      }
       this.$children.forEach(vm => {
         if (vm.$options.name === 'wick-tabs-head') {
           vm.$children.forEach(childVm => {
             if (childVm.$options.name === 'wick-tabs-item' && childVm.name === this.selected) {
-              console.log(childVm.$el)
               this.eventBus.$emit('update:selected', this.selected, childVm)
             }
           })
