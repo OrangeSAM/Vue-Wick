@@ -27,7 +27,16 @@
       }
     },
     mounted () {
-      this.eventBus.$emit('update:selected', this.selected)
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'wick-tabs-head') {
+          vm.$children.forEach(childVm => {
+            if (childVm.$options.name === 'wick-tabs-item' && childVm.name === this.selected) {
+              console.log(childVm.$el)
+              this.eventBus.$emit('update:selected', this.selected, childVm)
+            }
+          })
+        }
+      })
     },
     provide () {
       return {
@@ -39,6 +48,5 @@
 
 <style scoped>
   .tabs {
-    border: 1px solid lightcoral;
   }
 </style>
