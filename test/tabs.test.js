@@ -1,16 +1,26 @@
 const expect = chai.expect;
 import Vue from "vue";
 import Tabs from "../src/tabs";
+import TabsHead from "../src/tabs-head";
+import TabsBody from "../src/tabs-body";
+import TabsItem from "../src/tabs-item";
+import TabsPane from "../src/tabs-pane";
+
+Vue.component('w-tabs', Tabs)
+Vue.component('w-tabs-head', TabsHead)
+Vue.component('w-tabs-body', TabsBody)
+Vue.component('w-tabs-item', TabsItem)
+Vue.component('w-tabs-pane', TabsPane)
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
 describe("Tabs", () => {
-  it("存在.", () => {
+  it("存在", () => {
     expect(Tabs).to.exist;
   });
   // 一个it就是一个测试用例，
-  it('子组件只能是 tabs-head 和 tabs-body', (done) => {
+  it('接受selected属性', (done) => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     div.innerHTML = `
@@ -29,10 +39,7 @@ describe("Tabs", () => {
       el: div
     })
     vm.$nextTick(() => {
-      console.log(vm.$el)
-      let x = vm.$el.querySelector('.tabs-item[data-name="finance]')
-      console.log(x)
-      console.log('*********')
+      let x = vm.$el.querySelector('.tabs-item[data-name="finance"]')
       expect(x.classList.contains('active')).to.be.true
       done()
     })
