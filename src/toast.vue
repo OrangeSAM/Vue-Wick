@@ -13,18 +13,16 @@
 
 <script>
   export default {
-    name: 'wickToast',
+    name: 'wick-toast',
     // 只是个配置
     props: {
       // 是否自动关闭
       autoClose: {
-        type: Boolean,
-        default: true
-      },
-      // 延迟关闭时间
-      delayTime: {
         type: Number,
-        default: 31
+        default: 3,
+        validator(value) {
+          return typeof value === 'number'
+        }
       },
       // 关闭按钮
       closeBtn: {
@@ -88,7 +86,7 @@
         if (this.autoClose) {
           setTimeout(() => {
             this.close()
-          }, this.delayTime * 1000)
+          }, this.autoClose * 1000)
         }
       },
       // 用tricky的方式来设定竖线的高度
@@ -99,8 +97,8 @@
       }
     },
     mounted() {
-      this.execAutoClose()
       this.setLineHeight()
+      this.execAutoClose()
     }
   }
 </script>
@@ -129,7 +127,8 @@
       opacity: 1;
       transform: translateY(0%);
     }
-  }  @keyframes fade-in {
+  }
+  @keyframes fade-in {
     0% {
       opacity: 0;
     }
@@ -184,12 +183,12 @@
     }
 
     .close {
+      cursor: pointer;
       padding-left: 15px;
       flex-shrink: 0;
     }
 
     .line {
-      width: 1px;
       height: 100%;
       border-left: 1px solid #666666;
       margin-left: 15px;

@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="16">
+          <list size="22">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -21,6 +21,12 @@
             <item index="13" class="java.lang.String" itemvalue="w-content" />
             <item index="14" class="java.lang.String" itemvalue="w-footer" />
             <item index="15" class="java.lang.String" itemvalue="w-aside" />
+            <item index="16" class="java.lang.String" itemvalue="w-tabs" />
+            <item index="17" class="java.lang.String" itemvalue="w-tabs-head" />
+            <item index="18" class="java.lang.String" itemvalue="w-tabs-body" />
+            <item index="19" class="java.lang.String" itemvalue="w-tabs-item" />
+            <item index="20" class="java.lang.String" itemvalue="w-icon" />
+            <item index="21" class="java.lang.String" itemvalue="w-tabs-pane" />
           </list>
         </value>
       </option>
