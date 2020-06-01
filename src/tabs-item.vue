@@ -8,7 +8,7 @@
   export default {
     name: "wick-tabs-item",
     inject: ['eventBus'],
-    data() {
+    data () {
       return {
         active: false
       }
@@ -34,14 +34,17 @@
     methods: {
       itemClick () {
         if (this.disabled) return
-        this.eventBus.$emit('update:selected', this.name, this)
+        this.eventBus && this.eventBus.$emit('update:selected', this.name, this)
+        this.$emit('click', this)
       }
     },
-    created() {
-      this.eventBus.$on('update:selected', (name) => {
-          this.active = this.name === name
-        }
-      )
+    created () {
+      if (this.eventBus) {
+        this.eventBus.$on('update:selected', (name) => {
+            this.active = this.name === name
+          }
+        )
+      }
     }
   }
 </script>
@@ -55,9 +58,11 @@
     height: 100%;
     padding: 0 1em;
     cursor: pointer;
+
     &.active {
       color: $blue;
     }
+
     &.disabled {
       color: lightgray;
       cursor: not-allowed;
