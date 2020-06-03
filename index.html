@@ -171,39 +171,47 @@
       <span @click='showMe1'>点我1</span>
       <span @click='showMe2'>点我2</span>
     </div>
+
+
+    <div>
+      <h5>tabs组件</h5>
+      <w-tabs :selected.sync="selectedTab">
+        <w-tabs-head>
+          <w-tabs-item name="woman">
+            <w-icon name="settings"></w-icon>
+            beauty
+          </w-tabs-item>
+          <w-tabs-item name="IT" disabled>
+            IT
+          </w-tabs-item>
+          <w-tabs-item name="finance">
+            finance
+          </w-tabs-item>
+          <template v-slot:actions>
+            <span>松紧带</span>
+          </template>
+        </w-tabs-head>
+        <w-tabs-body>
+          <w-tabs-pane name="woman">
+            beauty相关
+          </w-tabs-pane>
+          <w-tabs-pane name="IT">
+            IT相关
+          </w-tabs-pane>
+          <w-tabs-pane name="finance">
+            finance相关
+          </w-tabs-pane>
+        </w-tabs-body>
+      </w-tabs>
+    </div>
   </div>
-
-
   <div>
-    <h5>tabs组件</h5>
-    <w-tabs :selected.sync="selectedTab">
-      <w-tabs-head>
-        <w-tabs-item name="woman">
-          <w-icon name="settings"></w-icon>
-          beauty
-        </w-tabs-item>
-        <w-tabs-item name="IT" disabled>
-          IT
-        </w-tabs-item>
-        <w-tabs-item name="finance">
-          finance
-        </w-tabs-item>
-        <template v-slot:actions>
-          <span>松紧带</span>
-        </template>
-      </w-tabs-head>
-      <w-tabs-body>
-        <w-tabs-pane name="woman">
-          beauty相关
-        </w-tabs-pane>
-        <w-tabs-pane name="IT">
-          IT相关
-        </w-tabs-pane>
-        <w-tabs-pane name="finance">
-          finance相关
-        </w-tabs-pane>
-      </w-tabs-body>
-    </w-tabs>
+    <w-popover>
+      <template slot='content'>
+        <div>popover内容</div>
+      </template>
+      <span>点这里</span>
+    </w-popover>
   </div>
 </div>
 <script src="./src/app.js"></script>
