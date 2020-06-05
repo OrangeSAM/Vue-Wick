@@ -21,10 +21,13 @@
         console.log('切换visible')
         if (this.visible === true) {
           setTimeout(() => {
-            document.addEventListener('click', () => {
-              this.visible = false
+            console.log('新增document监听')
+            let eventHandler = () => {
               console.log('点击body就关闭popover')
-            })
+              this.visible = false
+              document.removeEventListener('click', eventHandler)
+            }
+            document.addEventListener('click', eventHandler)
           }, 0)
         }
       }
