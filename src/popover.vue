@@ -1,9 +1,14 @@
 <template>
-  <div class='popover' @click='wrapClick'>
-    <div class='content-wrapper' v-if='visible'>
+  <div class='popover' @click.stop='wrapClick'>
+    <div ref="content"
+         class='content-wrapper'
+         @click.stop
+         v-if='visible'>
       <slot name='content'></slot>
     </div>
-    <slot></slot>
+    <span ref="trigger">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -18,12 +23,13 @@
     methods: {
       wrapClick() {
         this.visible = !this.visible
-        console.log('切换visible')
         if (this.visible === true) {
           setTimeout(() => {
-            console.log('新增document监听')
+            document.body.appendChild(this.$refs.content)
+            let {top, left} = this.$refs.trigger.getBoundingClientRect()
+            this.$refs.content.style.left = left + window.scrollX +'px'
+            this.$refs.content.style.top = top + window.scrollY +'px'
             let eventHandler = () => {
-              console.log('点击body就关闭popover')
               this.visible = false
               document.removeEventListener('click', eventHandler)
             }
@@ -40,11 +46,10 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
-
-    .content-wrapper {
-      position: absolute;
-      bottom: 100%;
-      border: 1px solid lightcoral;
-    }
+  }
+  .content-wrapper {
+    position: absolute;
+    box-shadow: 0 0 10px 0px rgba(0,0,0,.3);
+    transform: translateY(-100%);
   }
 </style>
