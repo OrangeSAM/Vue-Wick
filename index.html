@@ -206,12 +206,14 @@
     </div>
   </div>
   <div>
-    <w-popover>
-      <template slot='content'>
-        <div>popover内容</div>
-      </template>
-      <span>点这里</span>
-    </w-popover>
+    <div @click="popoverClick">
+      <w-popover>
+        <template slot='content'>
+          <div>popover内容</div>
+        </template>
+        <span>点这里</span>
+      </w-popover>
+    </div>
   </div>
 </div>
 <script src="./src/app.js"></script>

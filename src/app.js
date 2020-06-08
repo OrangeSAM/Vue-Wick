@@ -72,6 +72,9 @@ new Vue({
       this.$toast('我是一条message', {
         position: 'middle'
       })
+    },
+    popoverClick () {
+      console.log('使用popover时的点击')
     }
   }
 });
