@@ -3,6 +3,7 @@
        ref="popover"
        @click='wrapClick'>
     <div ref="content"
+         :class="{[`position-${position}`]: true}"
          class='content-wrapper'
          v-if='visible'>
       <slot name='content'></slot>
@@ -33,10 +34,26 @@
     methods: {
       // 定位内容区
       positionContent () {
-        document.body.appendChild(this.$refs.content)
-        let {top, left} = this.$refs.trigger.getBoundingClientRect()
-        this.$refs.content.style.left = left + window.scrollX + 'px'
-        this.$refs.content.style.top = top + window.scrollY + 'px'
+        const {content, trigger} = this.$refs
+
+        document.body.appendChild(content)
+        let {top, left, height, width} = trigger.getBoundingClientRect()
+        if (this.position === 'top') {
+          content.style.left = left + window.scrollX + 'px'
+          content.style.top = top + window.scrollY + 'px'
+        } else if (this.position === 'bottom') {
+          content.style.left = left + window.scrollX + 'px'
+          content.style.top = top + height +  window.scrollY + 'px'
+        } else if (this.position === 'left') {
+          let {height: height2} = content.getBoundingClientRect()
+          content.style.left = left + window.scrollX + 'px'
+          content.style.top = top + window.scrollY - Math.abs(height - height2) / 2 + 'px'
+        } else if (this.position === 'right'){
+          let {height: height2} = content.getBoundingClientRect()
+          content.style.left = left + window.scrollX + width + 'px'
+          content.style.top = top + window.scrollY - Math.abs(height - height2) / 2 + 'px'
+        }
+
       },
       onClickDocument (e) {
         if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) return
@@ -82,7 +99,6 @@
     border: 1px solid $border-color;
     border-radius: $border-radius;
     padding: 0.5em 0.7em;
-    margin-top: -10px;
     position: absolute;
     /*解决内容部分无节制横向展示问题*/
     max-width: 20em;
@@ -92,7 +108,6 @@
     /*box-shadow: 0 0 10px 0px rgba(0, 0, 0, .3);*/
     filter: drop-shadow(0 0 2px rgba(0,0,0, .3));
     background-color: white;
-    transform: translateY(-100%);
     &::before, &::after{
       content: '';
       display: block;
@@ -100,15 +115,66 @@
       width: 0;
       height: 0;
       position: absolute;
-      left: 10px;
     }
-    &::before{
-      border-top-color: $border-color;
-      top: 100%;
+    &.position-top{
+      transform: translateY(-100%);
+      margin-top: -10px;
+      &::before, &::after{
+        left: 10px;
+      }
+      &::before{
+        border-top-color: $border-color;
+        top: 100%;
+      }
+      &::after{
+        border-top-color: white;
+        top: calc(100% - 1px);
+      }
     }
-    &::after{
-      border-top-color: white;
-      top: calc(100% - 1px);
+    &.position-bottom{
+      margin-top: 10px;
+      &::before, &::after{
+        left: 10px;
+      }
+      &::before{
+        border-bottom-color: $border-color;
+        bottom: 100%;
+      }
+      &::after{
+        border-bottom-color: white;
+        bottom: calc(100% - 1px);
+      }
+    }
+    &.position-left{
+      transform: translateX(-100%);
+      margin-left: -10px;
+      &::before, &::after{
+        transform: translateY(-50%);
+        top: 50%;
+      }
+      &::before{
+        left: 100%;
+        border-left-color: $border-color;
+      }
+      &::after{
+        left: calc(100% - 1px);
+        border-left-color: white;
+      }
+    }
+    &.position-right{
+      margin-left: 10px;
+      &::before, &::after{
+        transform: translateY(-50%);
+        top: 50%;
+      }
+      &::before{
+        right: 100%;
+        border-right-color: $border-color;
+      }
+      &::after{
+        right: calc(100% - 1px);
+        border-right-color: white;
+      }
     }
   }
 </style>
