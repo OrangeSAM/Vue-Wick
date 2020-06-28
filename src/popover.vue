@@ -21,6 +21,15 @@
         visible: false,
       }
     },
+    props: {
+      position: {
+        type: String,
+        default: 'top',
+        validator(val) {
+          return ['top', 'left', 'right', 'bottom'].indexOf(val) >= 0
+        }
+      }
+    },
     methods: {
       // 定位内容区
       positionContent () {
