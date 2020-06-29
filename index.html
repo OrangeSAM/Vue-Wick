@@ -232,6 +232,32 @@
         <w-button>点这里</w-button>
       </w-popover>
     </div>
+    <div @click="popoverClick">
+      <w-popover trigger='click'>
+        <template slot='content'>
+          <div>popover内容</div>
+        </template>
+        <w-button>点这里</w-button>
+      </w-popover>
+      <w-popover trigger='click' position='right'>
+        <template slot='content'>
+          <div>popover内容</div>
+        </template>
+        <w-button>点这里</w-button>
+      </w-popover>
+      <w-popover trigger='click' position='bottom'>
+        <template slot='content'>
+          <div>popover内容</div>
+        </template>
+        <w-button>点这里</w-button>
+      </w-popover>
+      <w-popover trigger='click' position='left'>
+        <template slot='content'>
+          <div>popover内容</div>
+        </template>
+        <w-button>点这里</w-button>
+      </w-popover>
+    </div>
   </div>
 </div>
 <script src="./src/app.js"></script>

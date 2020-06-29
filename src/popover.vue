@@ -1,7 +1,6 @@
 <template>
   <div class='popover'
-       ref="popover"
-       @click='wrapClick'>
+       ref="popover">
     <div ref="content"
          :class="{[`position-${position}`]: true}"
          class='content-wrapper'
@@ -29,6 +28,29 @@
         validator(val) {
           return ['top', 'left', 'right', 'bottom'].indexOf(val) >= 0
         }
+      },
+      trigger: {
+        type: String,
+        default: 'hover',
+        validator(val) {
+          return ['hover', 'click'].indexOf(val) >= 0
+        }
+      }
+    },
+    mounted() {
+      if (this.trigger === 'click') {
+        this.$refs.popover.addEventListener('click', this.wrapClick)
+      } else {
+        this.$refs.popover.addEventListener('mouseenter', this.open)
+        this.$refs.popover.addEventListener('mouseleave', this.close)
+      }
+    },
+    destroyed() {
+      if (this.trigger === 'click') {
+        this.$refs.popover.removeEventListener('click', this.wrapClick)
+      } else {
+        this.$refs.popover.removeEventListener('mouseenter', this.open)
+        this.$refs.popover.removeEventListener('mouseleave', this.close)
       }
     },
     methods: {
