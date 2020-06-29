@@ -35,24 +35,29 @@
       // 定位内容区
       positionContent () {
         const {content, trigger} = this.$refs
-
         document.body.appendChild(content)
-        let {top, left, height, width} = trigger.getBoundingClientRect()
-        if (this.position === 'top') {
-          content.style.left = left + window.scrollX + 'px'
-          content.style.top = top + window.scrollY + 'px'
-        } else if (this.position === 'bottom') {
-          content.style.left = left + window.scrollX + 'px'
-          content.style.top = top + height +  window.scrollY + 'px'
-        } else if (this.position === 'left') {
-          let {height: height2} = content.getBoundingClientRect()
-          content.style.left = left + window.scrollX + 'px'
-          content.style.top = top + window.scrollY - Math.abs(height - height2) / 2 + 'px'
-        } else if (this.position === 'right'){
-          let {height: height2} = content.getBoundingClientRect()
-          content.style.left = left + window.scrollX + width + 'px'
-          content.style.top = top + window.scrollY - Math.abs(height - height2) / 2 + 'px'
+        const {top, left, height, width} = trigger.getBoundingClientRect()
+        const {height: height2} = content.getBoundingClientRect()
+        let positionMap = {
+          top: {
+            top: top + window.scrollY,
+            left: left + window.scrollX
+          },
+          bottom: {
+            top: top + height +  window.scrollY,
+            left: left + window.scrollX
+          },
+          left: {
+            top: top + window.scrollY - Math.abs(height - height2) / 2,
+            left: left + window.scrollX,
+          },
+          right: {
+            top: top + window.scrollY - Math.abs(height - height2) / 2,
+            left: left + window.scrollX + width
+          }
         }
+        content.style.left = positionMap[this.position].left + 'px'
+        content.style.top = positionMap[this.position].top + 'px'
 
       },
       onClickDocument (e) {
