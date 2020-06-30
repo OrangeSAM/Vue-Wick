@@ -150,10 +150,15 @@
         left: 10px;
       }
       &::before{
+        border-bottom: none;
         border-top-color: $border-color;
+        /*鼠标移到三角形周边，内容会一直抖动的原因*/
+        /*检测到移除trigger后，内容区隐藏，隐藏后，鼠标又在trigger上了，如此循环往复*/
+        /*修改border-color可观察清楚*/
         top: 100%;
       }
       &::after{
+        border-bottom: none;
         border-top-color: white;
         top: calc(100% - 1px);
       }
@@ -164,10 +169,12 @@
         left: 10px;
       }
       &::before{
+        border-top: none;
         border-bottom-color: $border-color;
         bottom: 100%;
       }
       &::after{
+        border-top: none;
         border-bottom-color: white;
         bottom: calc(100% - 1px);
       }
@@ -180,10 +187,12 @@
         top: 50%;
       }
       &::before{
+        border-right: none;
         left: 100%;
         border-left-color: $border-color;
       }
       &::after{
+        border-right: none;
         left: calc(100% - 1px);
         border-left-color: white;
       }
@@ -195,10 +204,12 @@
         top: 50%;
       }
       &::before{
+        border-left: none;
         right: 100%;
         border-right-color: $border-color;
       }
       &::after{
+        border-left: none;
         right: calc(100% - 1px);
         border-right-color: white;
       }
