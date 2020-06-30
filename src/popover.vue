@@ -5,7 +5,7 @@
          :class="{[`position-${position}`]: true}"
          class='content-wrapper'
          v-if='visible'>
-      <slot name='content'></slot>
+      <slot name='content' :close='close'></slot>
     </div>
     <span ref="trigger" style='display: inline-block'>
       <slot></slot>

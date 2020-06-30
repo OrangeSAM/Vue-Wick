@@ -207,9 +207,9 @@
   </div>
   <div>
     <div @click="popoverClick">
-      <w-popover>
-        <template slot='content'>
-          <div>popover内容</div>
+      <w-popover trigger='click'>
+        <template slot='content' slot-scope='{close}'>
+          <div>popover内容 <w-button @click='close'>关闭</w-button></div>
         </template>
         <w-button>点这里</w-button>
       </w-popover>
