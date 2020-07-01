@@ -17,6 +17,8 @@ import TabsHead from './tabs-head'
 import TabsItem from './tabs-item'
 import TabsPane from './tabs-pane'
 import Popover from './popover'
+import Collapse from './collapse'
+import CollapseItem from './collapse-item'
 
 
 // 这里注册时的w-button, 是供在template里使用组件时编写的
@@ -40,6 +42,8 @@ Vue.component('w-tabs-head', TabsHead)
 Vue.component('w-tabs-item', TabsItem)
 Vue.component('w-tabs-pane', TabsPane)
 Vue.component('w-popover', Popover)
+Vue.component('w-collapse', Collapse)
+Vue.component('w-collapse-item', CollapseItem)
 new Vue({
   el: "#app",
   data: {
