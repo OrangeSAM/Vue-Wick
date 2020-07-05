@@ -49,7 +49,8 @@ new Vue({
   data: {
     loading1: true,
     message: '我支持双向绑定',
-    selectedTab: 'woman'
+    selectedTab: 'woman',
+    selectedCollapse: '2'
   },
   methods: {
     myInputChange(event) {
