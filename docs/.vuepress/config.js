@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Wick',
+  title: 'Wick Vue',
   description: 'Vue UI库',
   serviceWorker: true,
   plugins: ['@vuepress/back-to-top'],
@@ -21,7 +21,30 @@ module.exports = {
     // 导航栏配置
     nav: [
       {text: '组件', link: '/compos/'},
-      {text: '开发文档', link: '/record/'},
-    ]
+      {text: '开发文档', link: 'https://blog.yibi.host/Projects/record_of_wheels.html'},
+      {text: 'npm', link: 'https://github.com/OrangeSAM'},
+      {text: 'github', link: 'https://github.com/OrangeSAM'},
+    ],
+    sidebar: {
+      '/compos/': [
+        {
+          title: '指南',
+          collapsable: false,
+          sidebarDepth: 3,
+          children: [
+            'introduction',
+            'quickStart'
+          ]
+        },
+        {
+          title: '组件',
+          collapsable: false,
+          sidebarDepth: 3,
+          children: [
+            'button'
+          ]
+        }
+      ]
+    }
   }
 }
