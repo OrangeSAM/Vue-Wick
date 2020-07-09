@@ -22,7 +22,7 @@ module.exports = {
     nav: [
       {text: '组件', link: '/compos/'},
       {text: '开发文档', link: 'https://blog.yibi.host/Projects/record_of_wheels.html'},
-      {text: 'npm', link: 'https://github.com/OrangeSAM'},
+      // {text: 'npm', link: 'https://github.com/OrangeSAM'},
       {text: 'github', link: 'https://github.com/OrangeSAM'},
     ],
     sidebar: {
