@@ -13,7 +13,8 @@
 </template>
 
 <script>
-// 对于这里不是很明白，项目在之前不是已经全局引入icon了
+// 对于这里不是很明白，项目在之前不是已经全局注册了icon组件
+// 因为app.js的注册，是供在index.html中用的？因为#app的挂载是html文件上，而不是在单文件组件中的原因？
 import WIcon from "./icon";
 export default {
   name: "wick-button",
@@ -71,6 +72,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $font-size: 16px;
+  $button-height: 32px;
+  $button-bg: white;
+  $border-radius: 4px;
+  $color: #333;
+  $border-color: #999;
+  $border-color-hover: #666;
+  $background-color-hover: #f1f1f1;
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -84,22 +93,22 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--font-size);
-  height: var(--button-height);
+  font-size: $font-size;
+  height: $button-height;
   /*为了按钮内的图标和文字水平对齐*/
-  line-height: var(--button-height);
+  line-height: $button-height;
   padding: 0 1em;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  background-color: var(--button-bg);
+  border-radius: $border-radius;
+  border: 1px solid $border-color;
+  background-color: $button-bg;
   &:hover {
     cursor: pointer;
-    border-color: var(--border-color-hover);
-    background-color: var(--background-color-hover);
+    border-color: $border-color-hover;
+    background-color: $background-color-hover;
   }
   &:active {
     /*如果想让这个效果消失的慢点，该咋办呢，transition设置了，box-shadow会失效*/
-    box-shadow: 0px 0px 10px 0px lightgray;
+    box-shadow: 0 0 10px 0 lightgray;
   }
   &:focus {
     /*去除useragent自带外边框*/
@@ -125,7 +134,7 @@ export default {
       margin-right: 5px;
     }
     > .ml {
-      margin-right: 0px;
+      margin-right: 0;
     }
     > .w-icon {
       order: 2;

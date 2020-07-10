@@ -4,6 +4,7 @@
   "description": "A Vue UI component library",
   "main": "index.js",
   "scripts": {
+    "docs:dev": "vuepress dev docs",
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/OrangeSAM/Vue-Wick#readme",
   "dependencies": {
+    "sass-loader": "^9.0.2",
     "stylus": "^0.54.5",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3"

@@ -16,6 +16,9 @@ import TabsBody from './tabs-body'
 import TabsHead from './tabs-head'
 import TabsItem from './tabs-item'
 import TabsPane from './tabs-pane'
+import Popover from './popover'
+import Collapse from './collapse'
+import CollapseItem from './collapse-item'
 
 
 // 这里注册时的w-button, 是供在template里使用组件时编写的
@@ -38,12 +41,16 @@ Vue.component('w-tabs-body', TabsBody)
 Vue.component('w-tabs-head', TabsHead)
 Vue.component('w-tabs-item', TabsItem)
 Vue.component('w-tabs-pane', TabsPane)
+Vue.component('w-popover', Popover)
+Vue.component('w-collapse', Collapse)
+Vue.component('w-collapse-item', CollapseItem)
 new Vue({
   el: "#app",
   data: {
     loading1: true,
     message: '我支持双向绑定',
-    selectedTab: 'woman'
+    selectedTab: 'woman',
+    selectedCollapse: ['2']
   },
   methods: {
     myInputChange(event) {
@@ -70,6 +77,9 @@ new Vue({
       this.$toast('我是一条message', {
         position: 'middle'
       })
+    },
+    popoverClick () {
+      console.log('使用popover时的点击')
     }
   }
 });
