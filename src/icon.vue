@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import './svg'
 export default {
   name: "wick-icon",
   props: ["name"]
