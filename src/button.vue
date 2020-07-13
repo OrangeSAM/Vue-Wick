@@ -27,6 +27,9 @@ export default {
       if (this.disabled) {
         classArr.push('disabled')
       }
+      if (this.round) {
+        classArr.push('round')
+      }
       return classArr
     }
   },
@@ -40,6 +43,10 @@ export default {
     },
     loading: {
       // Boolean是类型，boolean是typeof 时的一个值
+      type: Boolean,
+      default: false
+    },
+    round: {
       type: Boolean,
       default: false
     },
@@ -118,6 +125,9 @@ export default {
     box-shadow: none;
     cursor: not-allowed;
   }
+  &.round {
+    border-radius: 30px;
+  }
   > .ml {
     margin-right: 5px;
   }
@@ -143,5 +153,6 @@ export default {
   .loading {
     animation: spin 1.5s infinite linear;
   }
+
 }
 </style>
