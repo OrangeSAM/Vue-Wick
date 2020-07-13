@@ -1,0 +1,42 @@
+<template>
+  <div class='basic'>
+    <example-wrap>
+      <div class='code-wrap'>
+        <w-button disabled>默认按钮</w-button>
+        <w-button disabled type='primary'>主要按钮</w-button>
+        <w-button disabled type='success'>成功按钮</w-button>
+        <w-button disabled type='info'>信息按钮</w-button>
+        <w-button disabled type='warning'>警告按钮</w-button>
+        <w-button disabled type='error'>危险按钮</w-button>
+      </div>
+      <div class='code-wrap'>
+        <w-button disabled round >默认按钮</w-button>
+        <w-button disabled round type='primary'>主要按钮</w-button>
+        <w-button disabled round type='success'>成功按钮</w-button>
+        <w-button disabled round type='info'>信息按钮</w-button>
+        <w-button disabled round type='warning'>警告按钮</w-button>
+        <w-button disabled round type='error'>危险按钮</w-button>
+      </div>
+    </example-wrap>
+  </div>
+</template>
+
+<script>
+  import WButton from '../../../../src/button';
+  import ExampleWrap from '../util/example-wrap'
+  export default {
+    name: "not-allowed",
+    components: {WButton, ExampleWrap},
+    data () {
+      return {
+        loading1: false
+      }
+    },
+  }
+</script>
+
+<style scoped lang='stylus'>
+  .basic
+    .code-wrap
+      margin 20px
+</style>

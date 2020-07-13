@@ -90,8 +90,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $font-size: 16px;
-  $button-height: 32px;
+  $font-size: 14px;
+  $button-height: 36px;
   $button-bg: white;
   $border-radius: 4px;
   $color: #333;
@@ -132,16 +132,12 @@ export default {
     /*去除useragent自带外边框*/
     outline: none;
   }
-  &.disabled {
-    box-shadow: none;
-    cursor: not-allowed;
-  }
   &.round {
     border-radius: 30px;
   }
   &.type-primary {
     /*这里需要用到定义的主色调*/
-    background-color: rgb(64, 158, 255)
+    background-color: rgb(64, 158, 255);
   }
   &.type-success {
     background-color: rgb(103, 194, 58)
@@ -161,6 +157,10 @@ export default {
     svg{
       fill: white;
     }
+  }
+  &.disabled {
+    box-shadow: none;
+    cursor: not-allowed;
   }
   > .ml {
     margin-right: 5px;
