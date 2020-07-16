@@ -37,17 +37,15 @@
       return {
         loading1: false,
         basicCode: `
-          <w-button>默认按钮</w-button><br>
-          <w-button type='primary'>主要按钮</w-button>
-          <w-button type='success'>成功按钮</w-button>
-          <w-button type='info'>信息按钮</w-button>
-          <w-button type='warning'>警告按钮</w-button>
-          <w-button type='error'>危险按钮</w-button>
-        `
+    <w-button>默认按钮</w-button>
+    <w-button type='primary'>主要按钮</w-button>
+    <w-button type='success'>成功按钮</w-button>
+    <w-button type='info'>信息按钮</w-button>
+    <w-button type='warning'>警告按钮</w-button>
+    <w-button type='error'>危险按钮</w-button>`
       }
     },
     mounted () {
-      console.log(this.basicCode)
     }
   }
 </script>
