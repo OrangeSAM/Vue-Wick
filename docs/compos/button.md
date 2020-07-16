@@ -15,7 +15,8 @@ title: button 按钮
 <button-with-icon></button-with-icon>
 
 ### 按钮组
+<button-group></button-group>
 
 ### 加载中
-
+<button-loading></button-loading>
 

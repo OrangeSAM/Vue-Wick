@@ -12,7 +12,8 @@
     </div>
 
     <div class="operate-bar" @click='showCode = !showCode'>
-      显示代码
+      <template v-if='!showCode'>显示代码</template>
+      <template v-else>隐藏代码</template>
     </div>
   </div>
 </template>

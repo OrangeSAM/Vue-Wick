@@ -21,25 +21,26 @@ export default {
 </script>
 
 <style lang="scss">
-.w-button-group {
-  display: inline-flex;
-  vertical-align: middle;
-  > .w-button {
-    border-radius: 0;
-    &:not(:last-child) {
-      margin-right: -1px;
-    }
-    &:first-child {
-      border-top-left-radius: var(--border-radius);
-      border-bottom-left-radius: var(--border-radius);
-    }
-    &:last-child {
-      border-top-right-radius: var(--border-radius);
-      border-bottom-right-radius: var(--border-radius);
-    }
-    &:hover {
-      z-index: 1;
+  $border-radius: 4px;
+  .w-button-group {
+    display: inline-flex;
+    vertical-align: middle;
+    > .w-button {
+      border-radius: 0;
+      &:not(:last-child) {
+        margin-right: -1px;
+      }
+      &:first-child {
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+      }
+      &:last-child {
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+      }
+      &:hover {
+        z-index: 1;
+      }
     }
   }
-}
 </style>
