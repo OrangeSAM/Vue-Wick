@@ -27,6 +27,13 @@ export default {
       if (this.disabled) {
         classArr.push('disabled')
       }
+      if (this.round) {
+        classArr.push('round')
+      }
+      if (this.type) {
+        classArr.push(`type-${this.type}`)
+        classArr.push('white-color')
+      }
       return classArr
     }
   },
@@ -42,6 +49,17 @@ export default {
       // Boolean是类型，boolean是typeof 时的一个值
       type: Boolean,
       default: false
+    },
+    round: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      validator(value) {
+        let typeArr = ['primary', 'success', 'warning', 'info', 'error']
+        return typeArr.indexOf(value) !== -1
+      }
     },
     iconPosition: {
       type: String,
@@ -72,13 +90,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $font-size: 16px;
-  $button-height: 32px;
+  $font-size: 14px;
+  $button-height: 36px;
   $button-bg: white;
   $border-radius: 4px;
   $color: #333;
-  $border-color: #999;
-  $border-color-hover: #666;
+  $border-color: #e2e2e2;
+  $border-color-hover: #a9a9a9;
   $background-color-hover: #f1f1f1;
 @keyframes spin {
   0% {
@@ -114,6 +132,32 @@ export default {
     /*去除useragent自带外边框*/
     outline: none;
   }
+  &.round {
+    border-radius: 30px;
+  }
+  &.type-primary {
+    /*这里需要用到定义的主色调*/
+    background-color: rgb(64, 158, 255);
+  }
+  &.type-success {
+    background-color: rgb(103, 194, 58)
+  }
+  &.type-info {
+    background-color: rgb(144, 147, 153)
+  }
+  &.type-warning {
+    background-color: rgb(230, 162, 60)
+  }
+  &.type-error {
+    background-color: rgb(245, 108, 108)
+  }
+  &.white-color {
+    color: white;
+    border-color: white;
+    svg{
+      fill: white;
+    }
+  }
   &.disabled {
     box-shadow: none;
     cursor: not-allowed;
@@ -143,5 +187,6 @@ export default {
   .loading {
     animation: spin 1.5s infinite linear;
   }
+
 }
 </style>

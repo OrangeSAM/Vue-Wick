@@ -24,8 +24,10 @@
   },
   "homepage": "https://github.com/OrangeSAM/Vue-Wick#readme",
   "dependencies": {
+    "highlight.js": "^10.1.1",
     "sass-loader": "^9.0.2",
     "stylus": "^0.54.5",
+    "velocity-animate": "^1.5.2",
     "vue": "^2.6.10",
     "vue-hot-reload-api": "^2.3.3"
   },

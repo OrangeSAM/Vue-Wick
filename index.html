@@ -38,22 +38,24 @@
     body {
       font-size: var(--font-size);
     }
+    .col-style {
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
 <div id="app">
   <div>
     <h4>1. button 组件示例</h4>
-    <w-button>
+    <w-button type='success' round>
       登录
     </w-button>
     <w-button :disabled="true">
       禁用状态的登录
     </w-button>
     <w-button icon="settings" icon-position="right">
-      设置
     </w-button>
-    <w-button icon="settings">
+    <w-button type='primary' icon="settings">
       设置
     </w-button>
     <w-button icon="loading"
@@ -87,37 +89,41 @@
     <h4>3. 栅格系统 Row & Col 组件</h4>
     <w-row :gutter="20">
       <w-col span="1">
-        <div style="border: 1px solid red;">1</div>
+        <div class="col-style" style="background-color: #666666">&nbsp;</div>
       </w-col>
       <w-col span="1">
-        <div style="border: 1px solid red;">1</div>
+        <div class="col-style" style="background-color: #666666">&nbsp;</div>
       </w-col>
       <w-col span="1">
-        <div style="border: 1px solid red;">1</div>
+        <div class="col-style" style="background-color: #666666">&nbsp;</div>
       </w-col>
       <w-col span="18">
-        <div style="border: 1px solid red;">18</div>
+        <div class="col-style" style="background-color: #999999">&nbsp;</div>
       </w-col>
       <w-col span="3">
-        <div style="border: 1px solid red;">3</div>
+        <div class="col-style" style="background-color: #666666">&nbsp;</div>
       </w-col>
     </w-row>
     <w-row :gutter="20">
       <w-col span="22" offset="2">
-        <div style="border: 1px solid red;">22</div>
+        <div class="col-style" style="background-color: #666666">22</div>
       </w-col>
     </w-row>
     <w-row>
       <w-col span="1">
-        <div style="border: 1px solid red;">1</div>
+        <div class="col-style" style="background-color: #666666">1</div>
       </w-col>
       <w-col span="22" offset="1">
-        <div style="border: 1px solid red;">22</div>
+        <div class="col-style" style="background-color: #999999">22</div>
       </w-col>
     </w-row>
     <w-row>
-      <w-col>12</w-col>
-      <w-col>12</w-col>
+      <w-col span="12">
+        <div class="col-style" style="background-color: #999999"></div>
+      </w-col>
+      <w-col span="12">
+        <div class="col-style" style="background-color: #666666"></div>
+      </w-col>
     </w-row>
   </div>
 
@@ -269,6 +275,7 @@
   </div>
 
 </div>
+<script src='//at.alicdn.com/t/font_1357628_6a8y46oukt3.css'></script>
 <script src="./src/app.js"></script>
 <script src="./src/svg.js"></script>
 </body>
