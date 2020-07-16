@@ -1,7 +1,7 @@
 <template>
   <div class='basic'>
     <example-wrap>
-      <div class='example'>
+      <div style='margin-bottom: 20px'>
         <w-button>默认按钮</w-button>
         <w-button type='primary'>主要按钮</w-button>
         <w-button type='success'>成功按钮</w-button>
@@ -9,7 +9,7 @@
         <w-button type='warning'>警告按钮</w-button>
         <w-button type='error'>危险按钮</w-button>
       </div>
-      <div class='example'>
+      <div>
         <w-button round >默认按钮</w-button>
         <w-button round type='primary'>主要按钮</w-button>
         <w-button round type='success'>成功按钮</w-button>
@@ -42,7 +42,14 @@
     <w-button type='success'>成功按钮</w-button>
     <w-button type='info'>信息按钮</w-button>
     <w-button type='warning'>警告按钮</w-button>
-    <w-button type='error'>危险按钮</w-button>`
+    <w-button type='error'>危险按钮</w-button>
+
+    <w-button round >默认按钮</w-button>
+    <w-button round type='primary'>主要按钮</w-button>
+    <w-button round type='success'>成功按钮</w-button>
+    <w-button round type='info'>信息按钮</w-button>
+    <w-button round type='warning'>警告按钮</w-button>
+    <w-button round type='error'>危险按钮</w-button>`
       }
     },
     mounted () {
@@ -52,6 +59,5 @@
 
 <style scoped lang='stylus'>
   .basic
-    .example
-      margin 20px
+    margin-top 20px
 </style>

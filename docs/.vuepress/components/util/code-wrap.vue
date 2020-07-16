@@ -33,9 +33,6 @@
       }
     },
     methods: {
-      toggleDetail () {
-        this.showCode = !this.showCode
-      }
     },
     directives: {
       highlight: {

@@ -1,7 +1,7 @@
 <template>
-  <div class='basic'>
+  <div class='not-allowed'>
     <example-wrap>
-      <div class='code-wrap'>
+      <div style='margin-bottom: 20px'>
         <w-button disabled>默认按钮</w-button>
         <w-button disabled type='primary'>主要按钮</w-button>
         <w-button disabled type='success'>成功按钮</w-button>
@@ -9,7 +9,7 @@
         <w-button disabled type='warning'>警告按钮</w-button>
         <w-button disabled type='error'>危险按钮</w-button>
       </div>
-      <div class='code-wrap'>
+      <div>
         <w-button disabled round >默认按钮</w-button>
         <w-button disabled round type='primary'>主要按钮</w-button>
         <w-button disabled round type='success'>成功按钮</w-button>
@@ -36,7 +36,6 @@
 </script>
 
 <style scoped lang='stylus'>
-  .basic
-    .code-wrap
-      margin 20px
+  .not-allowed
+    margin-top 20px
 </style>

@@ -12,6 +12,7 @@
 
 <style scoped lang='stylus'>
   .example-wrap
+    padding 20px
     transition all .3s
     border-radius 5px 5px 0 0
     border 1px solid #f1f1f1
