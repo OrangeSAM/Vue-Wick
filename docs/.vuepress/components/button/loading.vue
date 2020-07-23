@@ -1,10 +1,10 @@
 <template>
   <div class='loading'>
     <example-wrap>
-      <w-button type='warning' :loading='loading' @click='loading = !loading'>提交</w-button>
-      <w-button type='success' :loading='loading' @click='loading = !loading'>成功按钮</w-button>
-      <w-button type='info' :loading='loading' @click='loading = !loading'>成功按钮</w-button>
-      <w-button type='error' :loading='loading' @click='loading = !loading'>成功按钮</w-button>
+      <w-button type='warning' :loading='isLoading' @click='loading = !loading'>提交</w-button>
+      <w-button type='success' :loading='isLoading' @click='loading = !loading'>成功按钮</w-button>
+      <w-button type='info' :loading='isLoading' @click='loading = !loading'>成功按钮</w-button>
+      <w-button type='error' :loading='isLoading' @click='loading = !loading'>成功按钮</w-button>
     </example-wrap>
     <code-wrap :content="loading">
       <template v-slot:intro="scope">
