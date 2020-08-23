@@ -35,6 +35,7 @@
   }
 </script>
 
-<style scoped>
-
+<style scoped lang="stylus">
+  .loading
+    margin-top 20px
 </style>
