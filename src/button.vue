@@ -27,11 +27,14 @@ export default {
       if (this.disabled) {
         classArr.push('disabled')
       }
+      // 按钮是否圆角
       if (this.round) {
         classArr.push('round')
       }
+      // 按钮类型
       if (this.type) {
         classArr.push(`type-${this.type}`)
+        // 因为有各种背景颜色，需要对边框和字体颜色，以免颜色冲突
         classArr.push('white-color')
       }
       return classArr
@@ -90,14 +93,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $font-size: 14px;
-  $button-height: 36px;
-  $button-bg: white;
-  $border-radius: 4px;
-  $color: #333;
-  $border-color: #e2e2e2;
-  $border-color-hover: #a9a9a9;
-  $background-color-hover: #f1f1f1;
+$font-size: 14px;
+$button-height: 36px;
+$button-bg: white;
+$border-radius: 4px;
+$color: #333;
+$border-color: #e2e2e2;
+$border-color-hover: #a9a9a9;
+$background-color-hover: #f1f1f1;
+$primary-color: rgb(64, 158, 255);
+$success-color: rgb(103, 194, 58);
+$info-color: rgb(144, 147, 153);
+$warning-color: rgb(230, 162, 60);
+$error-color: rgb(245, 108, 108);
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -137,19 +145,35 @@ export default {
   }
   &.type-primary {
     /*这里需要用到定义的主色调*/
-    background-color: rgb(64, 158, 255);
+    background-color: $primary-color;
+    /*权重比上一个高，覆盖掉*/
+    &.disabled {
+      opacity: .6;
+    }
   }
   &.type-success {
-    background-color: rgb(103, 194, 58)
+    background-color: $success-color;
+    &.disabled {
+      opacity: .6;
+    }
   }
   &.type-info {
-    background-color: rgb(144, 147, 153)
+    background-color: $info-color;
+    &.disabled {
+      opacity: .6;
+    }
   }
   &.type-warning {
-    background-color: rgb(230, 162, 60)
+    background-color: $warning-color;
+    &.disabled {
+      opacity: .6;
+    }
   }
   &.type-error {
-    background-color: rgb(245, 108, 108)
+    background-color: $error-color;
+    &.disabled {
+      opacity: .6;
+    }
   }
   &.white-color {
     color: white;
@@ -175,7 +199,6 @@ export default {
     > .content {
       order: 1;
       margin-left: 0;
-      margin-right: 5px;
     }
     > .ml {
       margin-right: 0;
@@ -187,6 +210,5 @@ export default {
   .loading {
     animation: spin 1.5s infinite linear;
   }
-
 }
 </style>

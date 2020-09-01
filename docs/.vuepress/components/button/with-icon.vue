@@ -4,9 +4,9 @@
       <w-button icon='search'></w-button>
       <w-button type='primary' icon='download'>主要按钮</w-button>
       <w-button type='success' icon='laud'>成功按钮</w-button>
-      <w-button type='info' icon='laud'>成功按钮</w-button>
-      <w-button type='warning' :loading='loading'>成功按钮</w-button>
-      <w-button type='error' icon='laud'>成功按钮</w-button>
+      <w-button type='info' icon='female'>信息按钮</w-button>
+      <w-button type='warning' icon='warning'>警告按钮</w-button>
+      <w-button type='error' icon='laud'>错误按钮</w-button>
     </example-wrap>
     <code-wrap :content="withIcon">
       <template v-slot:intro="scope">
