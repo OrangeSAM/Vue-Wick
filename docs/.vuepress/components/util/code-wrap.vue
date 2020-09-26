@@ -1,3 +1,4 @@
+<!--代码包裹组件，代码通过props传入-->
 <template>
   <div v-highlight class="code-wrap">
     <div v-show='showCode' class='detail-wrap'>
@@ -12,8 +13,7 @@
     </div>
 
     <div class="operate-bar" @click='showCode = !showCode'>
-      <template v-if='!showCode'>显示代码</template>
-      <template v-else>隐藏代码</template>
+      <span>{{ !showCode ? '显示代码' : '隐藏代码'}}</span>
     </div>
   </div>
 </template>
