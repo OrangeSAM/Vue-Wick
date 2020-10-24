@@ -15,7 +15,7 @@ describe('popover', () => {
     const div = document.createElement('div')
     document.body.appendChild(div)
     div.innerHTML = `
-      <w-popover position='bottom' ref='divRef'>
+      <w-popover position='bottom' ref='divRef' trigger="click">
         <template slot='content'>
           弹出内容
         </template>
@@ -27,12 +27,9 @@ describe('popover', () => {
     })
     vm.$el.querySelector('button').click()
     setTimeout(() => {
-      setTimeout(() => {
-        const {content} = vm.$refs.divRef.$refs
-        console.log(vm.$refs.divRef.$refs)
-        expect(content.classList.contains('position-bottom')).to.be.true
-      }, 500)
+      const {content} = vm.$refs.divRef.$refs
+      expect(content.classList.contains('position-bottom')).to.be.true
       done()
-    }, 400)
+    }, 1500)
   })
 })

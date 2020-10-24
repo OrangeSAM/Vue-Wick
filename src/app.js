@@ -56,6 +56,9 @@ new Vue({
     myInputChange(event) {
       console.log(event)
     },
+    myInputInput(event) {
+      console.log(event)
+    },
     showMe () {
       this.$toast('我是一条message111', {
         autoClose: 41,

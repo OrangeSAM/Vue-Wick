@@ -41,6 +41,7 @@ export default {
 };
 // 为什么用readOnly做变量名就不行，导致属性只能传递到div上，
 // 而必须使用readonly
+//   因为html属性不区分属性的大小写。
 </script>
 
 <style lang="scss" scoped>

@@ -81,6 +81,7 @@
     <w-input value="I am disabled" disabled></w-input>
     <w-input value="I am readonly" readonly></w-input>
     <w-input value="I am change event" @change="myInputChange"></w-input>
+    <w-input value="I am input event" @input="myInputInput"></w-input>
     <w-input v-model="message"></w-input>
     <span>{{ message }}</span>
   </div>
@@ -236,6 +237,7 @@
         </template>
         <w-button>点这里</w-button>
       </w-popover>
+
     </div>
     <div @click="popoverClick">
       <w-popover trigger='click'>
@@ -259,6 +261,12 @@
       <w-popover trigger='click' position='left'>
         <template slot='content'>
           <div>popover内容</div>
+        </template>
+        <w-button>点这里</w-button>
+      </w-popover>
+      <w-popover position='left' trigger="click">
+        <template slot='content' slot-scope="{close}">
+          <div>popover内容 <w-button @click="close">关闭</w-button></div>
         </template>
         <w-button>点这里</w-button>
       </w-popover>
