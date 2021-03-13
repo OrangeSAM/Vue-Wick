@@ -15,7 +15,7 @@
 <script>
 // 对于这里不是很明白，项目在之前不是已经全局注册了icon组件
 // 因为app.js的注册，是供在index.html中用的？因为#app的挂载是html文件上，而不是在单文件组件中的原因？
-import WIcon from "./icon";
+import WIcon from "../icon/icon";
 export default {
   name: "wick-button",
   components: {WIcon},

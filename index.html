@@ -25,7 +25,9 @@
       --background-color-hover: #f1f1f1;
     }
 
-
+    #app {
+      margin: 20px;
+    }
     /*临时样式*/
     #app > div {
       margin-bottom: 20px;
@@ -211,31 +213,30 @@
   <div>
     <h4>7. popover组件</h4>
     <div @click="popoverClick">
-      <w-popover trigger='click'>
+      <w-popover>
         <template slot='content' slot-scope='{close}'>
           <div>popover内容
-            <w-button @click='close'>关闭</w-button>
           </div>
         </template>
-        <w-button>点这里</w-button>
+        <w-button>hover这里</w-button>
       </w-popover>
       <w-popover position='right'>
         <template slot='content'>
           <div>popover内容</div>
         </template>
-        <w-button>点这里</w-button>
+        <w-button>hover这里</w-button>
       </w-popover>
       <w-popover position='bottom'>
         <template slot='content'>
           <div>popover内容</div>
         </template>
-        <w-button>点这里</w-button>
+        <w-button>hover这里</w-button>
       </w-popover>
       <w-popover position='left'>
         <template slot='content'>
           <div>popover内容</div>
         </template>
-        <w-button>点这里</w-button>
+        <w-button>hover这里</w-button>
       </w-popover>
 
     </div>

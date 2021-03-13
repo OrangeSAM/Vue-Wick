@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import WButton from '../../../../src/button';
+  import WButton from '../../../../src/button/button';
   import ExampleWrap from '../util/example-wrap';
   import CodeWrap from '../util/code-wrap'
 

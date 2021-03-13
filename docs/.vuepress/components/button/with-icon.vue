@@ -18,7 +18,7 @@
 
 <script>
   import ExampleWrap from '../util/example-wrap'
-  import WButton from '../../../../src/button'
+  import WButton from '../../../../src/button/button'
   import CodeWrap from '../util/code-wrap'
 
   export default {

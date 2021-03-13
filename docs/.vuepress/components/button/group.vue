@@ -16,8 +16,8 @@
 
 <script>
   import ExampleWrap from '../util/example-wrap'
-  import WButton from '../../../../src/button'
-  import WButtonGroup from '../../../../src/button-group'
+  import WButton from '../../../../src/button/button'
+  import WButtonGroup from '../../../../src/button/button-group'
   import CodeWrap from '../util/code-wrap'
   export default {
     name: "group",

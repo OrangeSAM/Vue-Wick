@@ -1,6 +1,6 @@
 <template>
   <div class="col" :class="colClass" :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}">
-    <slot><slot>
+    <slot></slot>
   </div>
 </template>
 
@@ -28,9 +28,6 @@ export default {
                 gutter && `gutter-${gutter}`
             ]
         }
-        // gutter () {
-        //     let parent = this.$parent
-        // }
     },
     inject: ['gutter'],
     mounted() {
